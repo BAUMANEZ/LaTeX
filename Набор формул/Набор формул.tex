@@ -1,0 +1,417 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+\frenchspacing
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{center}
+\textbf{Познакомимся с возможностями \TeX а по набору формул}
+\end{center}
+
+
+Любые формулы в \TeX е должны заключаться в значки \$. Даже одна греческая буква считается в \TeX е формулой! При этом пустые строки в~формулах недопустимы, а все пробелы --- игнорируются.
+
+\medskip
+
+\textbf{1. Греческие и латинские буквы}
+
+Латинские буквы вводятся непосредственно.
+\begin{center}
+\begin{tabular}{|l|l|l||l|l|}\hline
+\textbf{Вид}      & \textbf{Название}& \textbf{Команда}              & \textbf{Прописная}&\textbf{Команда}\\ \hline
+$\alpha$                    & Альфа  & \verb"\alpha"                         & $A$       & \verb"A"       \\ \hline
+$\beta$                     & Бета   & \verb"\beta"                          & $B$       & \verb"B"       \\ \hline
+$\gamma$                    & Гамма  & \verb"\gamma"                         & $\Gamma$  & \verb"\Gamma"  \\ \hline
+$\delta$                    & Дельта & \verb"\delta"                         & $\Delta$  & \verb"\Delta"  \\ \hline
+$\epsilon$, \, $\varepsilon$& Эпсилон& \verb"\epsilon", \, \verb"\varepsilon"& $E$       & \verb"E"       \\ \hline
+$\zeta$                     & Дзета  & \verb"\zeta"                          & $Z$       & \verb"Z"       \\ \hline
+$\eta$                      & Эта    & \verb"\eta"                           & $H$       & \verb"H"       \\ \hline
+$\theta$, \, $\vartheta$    & Тета   & \verb"\theta", \, \verb"\vartheta"    & $\Theta$  & \verb"\Theta"  \\ \hline
+$\iota$                     & Йота   & \verb"\iota"                          & $I$       & \verb"I"       \\ \hline
+$\kappa$, \, $\varkappa$    & Каппа  & \verb"\kappa", \, \verb"\varkappa"    & $K$       & \verb"K"       \\ \hline
+$\lambda$                   & Лямбда & \verb"\lambda"                        & $\Lambda$ & \verb"\Lambda" \\ \hline
+$\mu$                       & Мю     & \verb"\mu"                            & $M$       & \verb"M"       \\ \hline
+$\nu$                       & Ню     & \verb"\nu"                            & $N$       & \verb"N"       \\ \hline
+$\xi$                       & Кси    & \verb"\xi"                            & $\Xi$     & \verb"\Xi"     \\ \hline
+$o$                         & Омикрон& \verb"o"                              & $O$       & \verb"O"       \\ \hline
+$\pi$, \, $\varpi$          & Пи     & \verb"\pi", \, \verb"\varpi"          & $\Pi$     & \verb"\Pi"     \\ \hline
+$\rho$, \, $\varrho$        & Ро     & \verb"\rho", \, \verb"\varrho"        & P         & \verb"P"       \\ \hline
+$\sigma$, \, $\varsigma$    & Сигма  & \verb"\sigma", \, \verb"\varsigma"    & $\Sigma$  & \verb"\Sigma"  \\ \hline
+$\tau$                      & Тау    & \verb"\tau"                           & T         & \verb"T"       \\ \hline
+$\upsilon$                  & Ипсилон& \verb"\upsilon"                       & $\Upsilon$& \verb"\Upsilon"\\ \hline
+$\phi$, \, $\varphi$        & Фи     & \verb"\phi", \, \verb"\varphi"        & $\Phi$    & \verb"\Phi"    \\ \hline
+$\chi$                      & Хи     & \verb"\chi"                           & X         & \verb"X"       \\ \hline
+$\psi$                      & Пси    & \verb"\psi"                           & $\Psi$    & \verb"\Psi"    \\ \hline
+$\omega$                    & Омега  & \verb"\omega"                         & $\Omega$  & \verb"\Omega"  \\ \hline
+\end{tabular}
+\end{center}
+
+\medskip
+
+Как видите, легко запомнить!
+Чтобы вставить заглавную букву, команду нужно писать с большой буквы, либо, если она по начертанию совпадает с~латинской, то специальной команды вообще нет. \textit{Чтобы использовать команду} \verb"\varkappa" \textit{нужно подключить пакет} \textbf{amssymb}.
+
+
+
+
+
+\newpage
+
+\textbf{2. Символы различных математических операций}
+
+\begin{center}
+\begin{tabular}{|l|l||l|l|}\hline
+\textbf{Вид}     & \textbf{Команда}      & \textbf{Вид}      & \textbf{Команда}       \\ \hline
+$=$              & \verb"="              & $\ne$             & \verb"\ne"             \\
+$<$              & \verb"<"              & $>$               & \verb">"               \\
+$\le$            & \verb"\le"            & $\ge$             & \verb"\ge"             \\
+$\leqslant$      & \verb"\leqslant"      & $\geqslant$       & \verb"\geqslant"       \\
+$\pm$            & \verb"\pm"            & $\mp$             & \verb"\mp"             \\
+$\times$         & \verb"\times"         & $\cdot$           & \verb"\cdot"           \\
+$\cup$           & \verb"\cup"           & $\cap$            & \verb"\cap"            \\
+$\approx$        & \verb"\approx"        & $\div$            & \verb"\div"            \\
+$\parallel$      & \verb"\parallel"      & $\perp$           & \verb"\perp"           \\
+$\in$            & \verb"\in"            & $\notin$          & \verb"\notin"          \\
+$\subset$        & \verb"\subset"        & $\supset$         & \verb"\supset"         \\
+$\bigtriangleup$ & \verb"\bigtriangleup" & $\bigtriangledown$& \verb"\bigtriangledown"\\
+$\nabla$         & \verb"\nabla"         & $\angle$          & \verb"\angle"          \\
+$\sim$           & \verb"\sim"           & $\equiv$          & \verb"\equiv"          \\
+$\forall$        & \verb"\forall"        & $\exists$         & \verb"\exists"         \\
+$\emptyset$      & \verb"\emptyset"      & $\varnothing$     & \verb"\varnothing"     \\
+$\partial$       & \verb"\partial"       & $\infty$          & \verb"\infty"          \\
+$\cong$          & \verb"\cong"          & $\to$             & \verb"\to"             \\
+$\leftrightarrow$& \verb"\leftrightarrow"& $\Leftrightarrow$ & \verb"\Leftrightarrow" \\
+$\neg$           & \verb"\neg"           & $\parallel$       & \verb"\parallel"       \\ \hline
+\end{tabular}
+\end{center}
+
+\medskip
+
+Разумеется, это не все символы; их гораздо больше (см.~help).
+
+\bigskip
+
+Кстати, \emph{любой} символ можно перечеркнуть, поставив перед ним команду \verb"\not"; например, перечеркнем стрелку и знак перпендикулярности: 
+\begin{center}
+\begin{tabular}{cc}
+\verb"\not\to" & \verb"\not\perp" \\
+     $\not\to$ &      $\not\perp$ \\
+\end{tabular}
+\end{center}
+
+\bigskip
+
+Символы можно не только перечеркивать, но и ставить над ними <<крышечки>>, <<черточки>> и прочие значки:
+\begin{center}
+\begin{tabular}{ccccc}
+\verb"\dot a"  & \verb"\ddot a"  &  \verb"\vec a"  & \verb"\bar a"   & \verb"\tilde a" \\
+     $\dot a$  &      $\ddot a$  &       $\vec a$  &      $\bar a$   &      $\tilde a$ \\[2mm]
+\verb"\hat a"  & \verb"\grave a" & \verb"\check a" & \verb"\acute a" & \verb"\breve a" \\
+     $\hat a$  &      $\grave a$ &      $\check a$ &      $\acute a$ &      $\breve a$ \\
+\end{tabular}
+\end{center}
+
+\bigskip
+
+Некоторые эти символы могут стоять сразу над несколькими буквами; для таких значков зарезервированы специальные команды:
+\begin{center}
+\noindent\begin{tabular}{ccc}
+\verb"\widehat{a\cdot b}" & \verb"\widetilde{a+b}" & \verb"\overrightarrow{AB}" \\[1mm]
+     $\widehat{a\cdot b}$ &      $\widetilde{a+b}$ &      $\overrightarrow{AB}$ \\
+\end{tabular}
+\end{center}
+
+
+Цифры --- это цифры, буквы --- это буквы, а вот для названий функций зарезервированы отдельные команды! (Это нужно для того, чтобы они писались не курсивом, а <<прямо>>). Как правило, имя команды совпадает с названием самой функции, например:
+\[
+\sin \quad
+\cos \quad
+\arcsin \quad
+\arccos \quad
+\tg \quad
+\ctg \quad
+\tan \quad
+\cot \quad
+\arctg \quad
+\arcctg
+\]
+\[
+\log \quad
+\lg \quad
+\ln \quad
+\exp \quad
+\ker \quad
+\arg \quad
+\dim \quad
+\]
+
+
+
+Все эти команды не имеют никаких аргументов! То есть аргументы функций нужно писать как обычный текст.
+
+С учетом выше сказанного, мы можем написать, скажем, такую формулу, знакомую нам со школы:
+\[
+\sin(\alpha+\beta)
+=\sin\alpha \cos\beta+\cos\alpha \sin\beta = \sin\alpha \cdot \cos\beta+\cos\alpha \cdot \sin\beta.
+\]
+
+\noindent Такую же формулу можно использовать для косинуса.
+
+
+
+
+
+\bigskip
+
+
+\textbf{3. Верхние и нижние индексы}
+
+Теперь разберемся с верхними (степенями) и нижними индексами. Для верхних используется символ <<каретка>> \verb"^", для нижних "--- символ подчеркивания \verb"_"). Если индекс состоит из более чем одного символа, его надо заключать в группу (фигурные скобки).\\
+Примеры:
+
+\begin{center}
+\begin{tabular}{ccc}
+\verb"a^2"  &  \verb"b_{ij}" & \verb"C^n_k" \\
+     $a^2$  &       $b_{ij}$ &      $C^n_k$
+\end{tabular}
+\end{center}
+
+
+\medskip
+Кстати, при наборе формул для групп действуют обычные правила для скобок:
+\[
+\verb"a^{x^2}"  \quad  a^{x^2}
+\]
+
+
+
+\bigskip
+
+\textbf{4. Дроби}
+
+Дроби записываются с помощью команды \verb"\frac", которая имеет два обязательных  аргумента: первый "--- числитель, второй "--- знаменатель. При этом, если числитель и/или знаменатель состоят из одного символа, в скобки их брать не обязательно.
+
+\begin{center}
+\verb|\frac12+\frac x 2 = \frac{1+x}2| 
+\end{center}
+\[
+ \frac12+\frac x 2 = \frac{1+x}2
+\]
+
+
+\newpage
+
+Скобки в формулах набираются непосредственным образом. Для набора фигурных скобок используются комбинации \verb"\{" и \verb|\}|, например, $\{a_i\}_{i=1}^{\infty}$; а для набора двух вертикальных прямых линий --- команда \verb"\|", например, 
+$
+ \| \vec x \| = \sqrt{\vec x \cdot \vec x},
+$
+
+
+Чтобы сделать скобки размерными, нужно указывать перед ними команды \verb"\left" и \verb"\right" соответственно:
+\[
+\left(x+\frac1{x}\right)^2,    
+\qquad  
+\| \hat\varepsilon^{(p)} \| = \bigl\| \hat\varepsilon^{(p)} \bigr\| = \left\| \hat\varepsilon^{(p)} \right\| = \left\| \frac{\partial u_i}{ \partial x_j} \right\|.
+\]
+
+Эти же команды используются, чтобы увеличить, например, косую черту дроби. Тогда после команды \verb"\left" ставится точка (она напечатана не будет), а после \verb"\right" "--- косая черта (или другой ограничитель, вроде прямой черты или квадратной скобки и других). Например:
+\[
+\left.\frac{(a+b)}{(b+c)}\right/(a+c) .
+\]
+
+\bigskip
+
+\textbf{5. Установка размера скобок вручную}
+
+Размер ограничителей (скобок, черточек и т.п.) можно указывать и явно. Для этого вместо \verb"\left" и \verb"\right" используются пары \verb"\bigl"-\verb"\bigr", \verb"\Bigl"-\verb"\Bigr", \verb"\biggl"-\verb"\biggr", \verb"\Biggl"-\verb"\Biggr" (в порядке увеличения размера). Вот так они выглядят применительно к прямой черте:
+\[
+\Biggl|\biggl|\Bigl|\bigl| |x| \bigr|\Bigr|\biggr|\Biggr|
+\]
+
+
+\bigskip
+
+\textbf{6. Радикалы}
+
+Для задания корней используется команда \verb"\sqrt". Необязательный аргумент в квадратных скобках указывает степень корня:
+\begin{center}
+\begin{tabular}{ccc}
+\verb"\sqrt x"  &  \verb"\sqrt{1+x^2}"  &   \verb"\sqrt[3]{x+\sin x}" \\[2mm]
+     $\sqrt x$  &       $\sqrt{1+x^2}$  &        $\sqrt[3]{x+\sin x}$
+\end{tabular}
+\end{center}
+
+
+Штрихи производных обозначаются апострофами:
+\begin{center}
+\begin{tabular}{ccc}
+\verb"f''(x)"   &   \verb"g'(x)"   &   \verb"{x'}^2"  \\[2mm]
+     $f''(x)$   &        $g'(x)$   &        ${x'}^2$  
+\end{tabular}
+\end{center}
+
+
+\bigskip
+
+\textbf{7. Сумма и произведение}
+
+Вот так описываются <<сумма>> и <<произведение>>:
+\begin{center}
+\verb"\sum_{i=1}^n n^2"   \quad    \verb"\prod_{i=1}^n n^2" 
+\end{center}
+
+\[
+\sum_{i=1}^n n^2   \quad   \prod_{i=1}^n n^2
+\]
+
+
+Если формула будет в строке, то пределы суммирования будут сбоку, вот так: $\sum_{i=1}^n n^2$, $\prod_{i=1}^n n^2$
+
+В этом случае, чтобы пределы суммирования писались не рядом, а над и под знаком суммирования, нужно добавить \\ команду \verb"\limits": $\sum\limits_{i=1}^n n^2$   (\verb"\sum\limits_{i=1}^n n^2").
+
+Команда \verb"\nolimits" дает обратную директиву.
+
+То же самое для интегралов:
+\[\int f(x) dx\]
+\[\oint f(x) dx\]
+\[\iint f(x) dx\]
+\[\iiint f(x) dx\]
+\[\int_0^1 f(x) dx\]
+\[\int\limits_0^1 f(x) dx\]
+\ldots и произведений:
+\[\prod\nolimits_{i=1}^n i=n!\]
+\ldots а также пределов:
+\[\lim_{n\to\infty}{f_n(x)}\]
+
+Важно отметить, что команды рисования двойных и тройных интегралов становятся доступными лишь при подключении пакета \texttt{amsmath}, в котором содержится огромное количество математических значков.
+
+Наконец, \TeX\ автоматически нумерует выключенные формулы. Для этого их необходимо обозначать как окружения:
+\begin{equation}
+\label{formula1}
+ax^2+bx+c=0
+\end{equation}
+
+
+
+\begin{equation}
+\label{anotherformula}
+D=\sqrt{b^2-4ac}
+\end{equation}
+
+
+Формулы можно нумеровать и вручную. Для этого предназначена команда \verb|\eqno|. Эта команда не может быть использована в окружении!
+\[
+x=\frac{-b\pm D}{2a} \eqno{(*)}
+\]
+
+\newpage
+
+Ссылки на формулы даются командами \verb|\ref| и \verb|\pageref|. Пример: \\
+Формула~\eqref{formula1} на с.~\pageref{formula1}\\
+\ldots согласно формуле \eqref{anotherformula} на с.~\pageref{anotherformula}, корень из дискриминанта  равен\ldots
+
+
+И напоследок, горизонтальные фигурные скобки:
+\[
+\underbrace{1+3+5+7+\ldots+(2n-1)}_{n}=n^2
+\]
+
+
+
+\bigskip
+
+\textbf{Оформление текста в формулах}
+\medskip
+
+По умолчанию весь текст в формулах пишется курсивом. Чтобы вставить в формулу текстовый комментарий, используется команда \verb|\mbox|:
+\[
+a^n+b^n=c^n \mbox{ имеет решение в целых числах только для } n=2
+\]
+
+Действие команды \verb|\text|, входящей в пакет \texttt{amsmath}, может показаться аналогичным, но только на первый взгляд:
+\[
+a^n+b^n=c^n \text{ имеет решение в целых числах только для } n=2
+\]
+
+Существенная разница между ними проявляется при попытке написать текст, например, в индексе:
+\[
+a_{\mbox{центростремительное}} = \frac{v^2}{r}  \qquad a_{\text{центростремительное}} = \frac{v^2}{r}
+\]
+
+
+\textbf{Смена шрифта при наборе формул}
+
+Чтобы изменить написание символов в формулах, используются специальные команды (для последних двух необходимо подключить пакет \texttt{amsfonts}):
+\begin{center}
+\begin{tabular}{|l|l|c|} \hline
+Жирный шрифт                  & \verb|\mathbf{...}|   &  $P \to \mathbf P$  \\ \hline
+Прямой шрифт                  & \verb|\mathrm{...}|   &  $H \to \mathrm H$  \\ \hline
+Равноразмерный шрифт          & \verb|\mathtt{...}|   &  $M \to \mathtt M$  \\ \hline
+Шрифт без засечек             & \verb|\mathsf{...}|   &  $S \to \mathsf S$  \\ \hline
+Калиграфический шрифт (англ.) & \verb|\mathcal{...}|  &  $X \to \mathcal X$ \\ \hline
+Ажурный шрифт (англ)          & \verb|\mathbb{...}|   &  $R \to \mathbb R$  \\ \hline
+Готический шрифт (англ.)      & \verb|\mathfrak{...}| &  $G \to \mathfrak G$\\ \hline
+\end{tabular}
+\end{center}
+
+\medskip
+Теперь несколько важных тонкостей.
+Выравнивание высоты корней в одной строке делается с помощью невидимых символов, называемых <<фантомами>>. В частности, команда \verb|\mathstrut| вставляет пробел нулевой толщины и высотой со скобку.
+\[
+\sqrt{a} +\sqrt{d} \qquad \to \qquad \sqrt{\mathstrut a} + \sqrt{\mathstrut d}
+\]
+
+Чтобы спрятать часть формулы, используется команда \verb|phantom{...}|. Например, знак радикала выглядит так:~$\sqrt{\phantom{x}}$. Есть еще команды \verb|\vphantom| и \verb|\hphantom|, которые занимают место \emph{только} по вертикали или горизонтали соответственно.
+
+Еще одна замечательная команда --- это \verb|\lefteqn{...}|. \TeX\ будет считать, что аргумент этой команды места не занимает и дальнейший текст напечатает с того же места. То есть, с ее помощью можно накладывать символы друг на друга! Например, можно сделать так:
+\[
+\lefteqn{\mathrm{X}}\mathrm{O}
+\]
+
+С помощью такого наложения и фантомов можно делать, например, вот такие вещи:
+\[
+\lefteqn{\overbrace{\phantom{1+2+3}}} 1+ \underbrace{2+3+4}
+\]
+
+\newpage
+
+Отметим, что \TeX\ не всегда правильно оформляет формулы и текст в них --- в результате получаются пробелы неправильной длины. Чтобы добиться нужного результата, приходится прибегать к хитростям. 
+\[
+\int f(\frac1x)dx
+\]
+
+\[
+\int f(\frac1x)\,dx
+\]
+
+\[
+\int f\bigl(\frac1x\bigr)\,dx
+\]
+
+\[
+\int\!\! f\Bigl(\frac1x\Bigr)dx
+\]
+
+\[
+\left( \frac12 \right)^{\!2}
+\]
+
+\[
+f(x_1,\ldots,x_n)
+\]
+
+\[
+f(x_1,\,\ldots,\,x_n)
+\]
+
+
+
+\end{document} 

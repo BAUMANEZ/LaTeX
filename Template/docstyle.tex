@@ -1,0 +1,201 @@
+\documentclass[12pt,a4paper,draft]{article}
+
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+%\usepackage{geometry}
+%\geometry{a4paper,	total={170mm,257mm}, left=20mm,	top=20mm}
+
+%\hoffset=-36mm
+%\voffset=-45mm
+
+\frenchspacing
+
+\author{И.\,К.~Марчевский}
+\title{Очень краткое введение в оформление документов в \LaTeXe}
+\date{Москва, 2021}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+%\maketitle
+
+\begin{abstract}
+В этом документе рассматриваются некоторые стили и возможности оформления, предоставляемые \TeX ом.
+\end{abstract}
+
+
+\section{Классы документов}
+
+\subsection{Основные классы документов}
+
+В \LaTeXe{} существуют несколько предопределенных заранее классов документов: \texttt{article} (небольшая статья, курсовая работа), \texttt{report} (большая научная статья с разделением на главы, возможностью двухстороннего набора), \texttt{book} (книга с двухсторонним набором, особым стилем оформления), \texttt{letter} (деловое письмо), \texttt{proc} (сборник статей) и др.
+
+Имеется возможность создания собственных классов. Например, класс, использованный для создания книг серии "`Математика в техническом университете"', носит название \texttt{bpm}, а дальнейшее его развитие --- \texttt{bpm2}\footnote{Эти классы были созданы А.Н.~Канатниковым}.
+
+Различия базовых классов описаны в таблице ниже:\\
+
+\medskip
+
+\noindent
+\begin{tabular}{|l|@{\,}c@{\,}|@{\,}c@{\,}|c|c|}
+\hline
+                        & \texttt{article} & \texttt{report} & \texttt{book} & \texttt{proc} \\
+\hline
+Автоматическая нумерация разделов & $+$   & $+$   & $+$   & $+$ \\ \hline
+Разбиение на главы                & $-$   & $+$   & $+$   & $-$ \\ \hline
+"`Двусторонняя"' печать           & $\mp$ & $\mp$ & $\pm$ & $-$ \\ \hline
+Титульный лист                    & $\mp$ & $\pm$ & $\pm$ & $-$ \\ \hline
+Колонтитулы   		              & $\mp$ & $\pm$ & $\pm$ & $\mp$ \\ \hline
+Все страницы одинаковой высоты    & $\mp$ & $\mp$ & $\pm$ & $-$\\ \hline
+Набор в две колонки               & $\mp$ & $\mp$ & $\mp$ & $+$\\ \hline
+Набор в одну колонку              & $\pm$ & $\pm$ & $\pm$ & $-$\\
+\hline
+\end{tabular}
+
+
+\medskip
+
+Расшифровка обозначений:
+
+\begin{itemize}
+\item["`$+$"'] означает, что данная опция всегда используется при наборе текста;
+\item["`$\pm$"'] подразумевает, что при желании эту опцию можно отключить;
+\item["`$\mp$"'] говорит о том, что по умолчанию опция отключена, но может быть включена;
+\item["`$-$"'] означает, что данная опция в этом классе недоступна.
+\end{itemize}
+
+Нужно иметь в виду, что в разных классах некоторые вещи могут делаться по-разному, скажем, оформление колонтитулов.
+
+\newpage
+
+\subsection{Необязательные аргументы при задании классов}
+
+В качестве необязательных аргументов для классов \texttt{article}, \texttt{report} и \texttt{book} (через запятую, в квадратных скобках) для команды \verb"\documentclass" можно указать следующие опции:
+
+\medskip
+
+\noindent\begin{tabular}{|p{37mm}|p{35mm}|p{45mm}|}
+\hline
+Опция & Варианты & По умолчанию \\
+\hline
+\raggedright Размер шрифта \texttt{normalsize}  & \texttt{10pt}, \texttt{11pt}, \texttt{12pt} & \texttt{10pt}\\
+\hline
+Размер бумаги & \raggedright \texttt{a4paper}, \texttt{a5paper}, \texttt{b5paper}, \texttt{letterpaper}, \texttt{legalpaper}, \texttt{executivepaper} &
+\texttt{letter} \par ($8{,}5 \times 11$ дюймов) \\
+\hline
+\raggedright Положение страницы & \texttt{landscape} \par (альбомное) & книжное \\
+\hline
+\raggedright Наличие титульной страницы & \texttt{titlepage}, \texttt{notitlepage} & \texttt{titlepage} для report и book \par \texttt{notitlepage} для article \\
+\hline
+\raggedright Положение номеров формул & \texttt{leqno} \par (слева) & справа \\
+\hline
+Выравнивание формул & \texttt{fleqn} \par (по левому краю) & по середине \\
+\hline
+\raggedright Выделение маркером длинных строк & \texttt{draft} (черновик) \par \texttt{final} (чистовик) & \texttt{final} \\
+\hline
+\raggedright Одно- или двухсторонняя печать & \texttt{oneside} \par \texttt{twoside} & \texttt{oneside} для report и article \par \texttt{twoside} для book \\
+\hline
+\raggedright Страница начала главы & \texttt{openany} (с любой) \par \texttt{openright} (с правой)  & \texttt{openany} для report и article \par \texttt{openright} для book \\
+\hline
+\raggedright Колонки & \texttt{onecolumn} \par \texttt{twocolumn} & \texttt{onecolumn} \\
+\hline
+
+\end{tabular}
+
+\bigskip
+
+%\begin{equation}
+%D = b^2 - 4 a c.
+%\end{equation}
+
+Например, можно написать так:\\
+\verb"\documentclass[12pt,a4paper,draft]{article}"
+
+\clearpage
+
+\section{Стили страниц}
+Стили оформления страниц задаются двумя командами:
+
+\noindent \verb"\pagestyle{...}" --- задает стиль оформления всех страниц документа;
+
+\noindent \verb"\thispagestyle{...}" --- стиль оформления данной страницы.
+
+\bigskip
+
+\begin{tabular}{p{24mm}p{85mm}}
+\hline
+\texttt{empty}      & никакого оформления; \\
+\texttt{plain}      & только номера страниц;\\
+\texttt{headings}   & колонтитулы (включающие в себя номера страниц);\\
+\texttt{myheadings} & оформление задается в явном виде.\\
+\hline
+\end{tabular}
+
+\bigskip
+Следующие параметры управляют полями:\\
+
+\begin{tabular}{p{33mm}p{75mm}}
+\hline
+\texttt{textwidth=X}     &ширина текста на странице\\
+\texttt{oddsidemargin=X} &отступ от левого края = $X + 1$ дюйм\\
+\texttt{topmargin=X}     &отступ от верхнего края = $X + 1$ дюйм\\
+\texttt{textheight=X}    &высота текста (не считая колонтитулов)\\
+\texttt{hoffset=X}       &сдвиг страницы по горизонтали\\
+\texttt{voffset=X}       &сдвиг страницы по вертикали\\
+\hline
+\end{tabular}
+
+\bigskip
+
+Для задания полей документа можно использовать пакет \texttt{geometry}
+
+\section{Рубрикация документа}
+
+Для рубрикации документа в \TeX е предусмотрены следующие команды, создающие новые разделы (в порядке вложенности):
+
+\begin{tabular}{ll}
+1) & \verb"\part" (часть, не прерывает нумерацию глав)\\
+2) & \verb"\chapter" (глава, не определена в классах \texttt{article}, \texttt{proc}) \\
+3) & \verb"\section" (раздел) \\
+4) & \verb"\subsection" (подраздел) \\
+5) & \verb"\subsubsection" (раздел подраздела)\\
+6) & \verb"\paragraph" (параграф, не нумеруется, не заносится в оглавление)\\
+7) & \verb"\subparagraph" (подпараграф, тем более не нумеруется)\\
+\end{tabular}
+
+\bigskip
+
+Варианты команд со звездочкой (например, \verb"\section*") начинают новые разделы, не нумеруя их и, соответственно, не занося в оглавление.
+
+Такое выделение всех заголовков позволяет очень легко создавать в~\TeX е оглавление. Для этого достаточно поместить в нужном месте документа команду \verb"\tableofcontents".
+
+\section{Титульный лист}
+Создание титульного листа тоже можно доверить \TeX у. Для этого используется команда \verb"\maketitle". При этом в преамбуле документа необходимо указать команды \verb"\author", \verb"\title" и \verb"\date".
+
+\section{Список литературы}
+Наконец, очень важное преимущество \TeX а заключается в удобстве создания списка литературы. Он обозначается окружением \texttt{thebibliography} с~обязательным параметром --- произвольным числом, задающим ширину номеров (если источников меньше 10, можно указать любую цифру; меньше 100 --- любые 2 цифры, и т.д.) Каждый источник задается командой \verb"\bibitem", в качестве обязательного аргумента которой используется \emph{ссылка}, которую нужно указывать, чтобы ссылаться на этот источник. Ссылка на источник задается командой \verb"\cite". Пример:
+
+\bigskip
+
+\begin{quote}
+Хотя в \cite{constitution} постулируется свобода передвижения, многие лекторы не согласны с тем, что это дает их студентам право на свободное посещение лекций.
+\end{quote}
+
+Также можно давать ссылку сразу на несколько источников: каждый россиянин имеет много различных прав~\cite{constitution, UN1234}. Или назначать свои метки для источников: учтите, за умышленную порчу компьютерной информации можно "`сесть"' на 5 лет \cite{273}.
+
+\begin{thebibliography}{1}
+\bibitem{constitution} Конституция Российской Федерации.
+\bibitem{UN1234} Конвенция ООН по правам человека.
+\bibitem[Статья 273 УК РФ]{273} Создание программ для ЭВМ или внесение изменений в существующие программы, заведомо приводящих к несанкционированному уничтожению, блокированию, модификации либо копированию информации, нарушению работы ЭВМ, системы ЭВМ или их сети, а равно использование либо распространение таких программ или машинных носителей с такими программами.
+\bibitem{Loyc} Лойцянский Л.\,Г. Механика жидкости и газа. М.: Дрофа, 2003. 846 с.
+\end{thebibliography}
+
+\newpage
+
+\tableofcontents
+
+
+\end{document} 

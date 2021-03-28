@@ -1,0 +1,66 @@
+\documentclass{article} 
+
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc} 
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\frenchspacing 
+\righthyphenmin = 2 
+
+\begin{document} 
+    \begin{center}
+        \LARGE{Повторим все, что было на семинаре}
+        \\[5mm]
+        \normalsize{Первая строка отделена от второй отступом размером 5mm}
+    \end{center}
+
+    \vspace{1cm}
+
+    \textbf{1. Набор текста} 
+
+    Эксперимент с... \hspace{5mm} \textbf{большим пробелом}
+ 
+    Как можно было заметить, текст можно делать \textbf{жирным}, а также \textit{курсивным}, \underline{подчеркнутым}, \fbox{он может находиться в рамке}, {\slshape быть под наклоном}, {\ttfamily написан в стиле старых печатных машинок}, {\large быть любого размера} и так далее.
+
+    Убедимся, что дефис( - ), тире( -- ), <<самое длинное тире>>(---) визуально отличаются друг от друга
+
+    \vspace{1cm}
+
+    \textbf{2. Домашнее задание №\hspace{0.5mm}1}
+
+    \sloppypar
+
+    Мы проверим далее последнее утверждение при $n = 1$
+
+    Рассмотрим следующую типичную задачу. Требуется построить таблицу значений некоторой функции так, чтобы погрешность при интерполяции значений функции многочленом заданной степени $m$ не превосходила $\varepsilon$. В этом случае говорят, что таблица допускает интерполяцию степени $m$ (с погрешностью $\varepsilon$). Таблицы, выпускаемые для
+    широкого круга пользователей, обычно составляются так, чтобы они допускали интерполяцию первой степени, иначе -- \textsl{линейную интерполяцию}. Примером таких таблиц могут служить таблицы В.М Брадиса, известные из школьного курса. В дальнейшем рассматриваем случай таблицы \underline{с постоянным шагом}.
+    
+    \vspace{1cm}
+
+    \textbf{3. Формула (<<рк>>)}
+
+    \[
+        f(x) = 
+        \begin{cases}
+            \frac{1}{x} \cdot \int\nolimits{|\psi|^2 dx} \cdot \| \vec{p} \times \vec{q} \| + \lim\limits_{\varepsilon \to 0}{ (1 + \varepsilon)^{\frac{1}{\varepsilon}} }, 
+            & 
+            \text{если } x \in \bigl( -\infty; \frac{2}{3} \bigr] \cap \{ \varnothing \}, \forall\varepsilon > 0 \exists N(\varepsilon) \ge N_*, 
+
+            \\ 
+
+            \tfrac{1}{ x + \tfrac{1}{x} } \cdot \sum\limits_{i = N_0}^{N_1}{\underbrace{ \phi_1 \cdot \xi'_2 \cdot \beta''_3 \cdot \dot\eta_4 \cdot \ldots \tilde\chi_i }_{i\text{ раз}}} - \overline{mn}, 
+            & 
+            \text{если } x \in \mathbb{R} \setminus \Bigl [ \ln{ \pi^e;\sqrt{\frac{53\sqrt[3]{2}}{3}} \cdot \sin \frac{\pi}{50} } \Bigr) \cup \{ \frac{1}{12} \},
+
+            \\
+
+            \tfrac{1}{ x + \tfrac{1}{x + \tfrac{1}{x}}} \cdot \frac{d}{dt} \frac{\partial^2 \rho (x,y,z)}{\partial z \partial y} + \Delta \pm 0{,}25, 
+            & 
+            \text{если } x \notin \left( \cos 45^{\circ}; \log_2 \frac{\Omega}{\sigma} \right) \text{ и } \sin \angle A \approx 2{,}5.
+        \end{cases}
+    \]
+\end{document}

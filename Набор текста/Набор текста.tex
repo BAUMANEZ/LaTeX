@@ -1,0 +1,457 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+\frenchspacing
+\righthyphenmin=2
+
+\begin{document}
+
+\begin{center}
+В этом файле содержатся команды, необходимые для набора текста
+\end{center}
+
+\textbf{1. Вывод символов}
+
+Все буквенно-цифровые символы, содержащиеся в <<стандартной>> раскладке ASCII, в \TeX\ вводятся в текстовом режиме непосредственно, за исключением специальных символов, перечисленных ниже
+\begin{center}
+ \verb"{  }  $  &  #  %  _  ^  ~  \"
+\end{center}
+
+Чтобы напечатать эти символы, используются следующие команды.
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Результат} & \textbf{Набираем}     \\ \hline
+\{                 & \verb"\{"             \\
+\}                 & \verb"\}"             \\
+\$                 & \verb"\$"             \\
+\&                 & \verb"\&"             \\
+\#                 & \verb"\#"             \\
+\%                 & \verb"\%"             \\
+\_                 & \verb"\_"             \\
+\^{}               & \verb"\^{}"           \\
+\~{}               & \verb"\~{}"           \\
+\textbackslash     & \verb"\textbackslash" \\ \hline
+\end{tabular}
+\end{center}
+
+Особый статус имеет символ <<@>>: в обычном режиме он является <<обычным>> символом, однако он может также использоваться как специальный символ, как правило --- при определении новых команд.
+
+Кроме того, часто используются дополнительные возможности, предоставляемые \TeX ом: простановка диакритических знаков, <<специальных>> символов и много другого.
+
+\begin{center}
+\begin{tabular}{|c|l||c|l|}
+\hline
+\textbf{Результат} & \textbf{Набираем}      & \textbf{Результат}  & \textbf{Набираем}        \\ \hline
+\`e                & \verb"\`e"             &   \'e               & \verb"\'e"               \\
+\^e                & \verb'\^e'             &   \~e               & \verb"\~e"               \\
+\=e                & \verb"\=e"             &   \.e               & \verb"\.e"               \\
+\u{e}              & \verb"\u{e}"           &   \v{e}             & \verb"\v{e}"             \\
+\H{e}              & \verb"\H{e}"           &   \"e               & \verb|\"e|               \\
+\c{e}              & \verb"\c{e}"           &   \d{e}             & \verb"\d{e}"             \\
+\b{e}              & \verb"\b{e}"           &   \r{e}             & \verb"\r{e}"             \\
+\t oo              & \verb"\t oo"           &   \ss               & \verb"\ss"               \\
+\i                 & \verb"\i"              &   \j                & \verb"\j"                \\
+\ae                & \verb"\ae"             &   \oe               & \verb"\oe"               \\
+\textexclamdown    & \verb"\textexclamdown" &   \textquestiondown & \verb"\textquestiondown" \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{l@{\quad}l}
+Ch\'erie, \c{c}a ne me pla\^\i t pas! & \verb"Ch\'erie, \c{c}a ne me pla\^\i t pas!" \\
+K\"onigsberg, Ostpreu\ss{}en          & \verb|K\"onigsberg, Ostpreu\ss{}en|          \\
+\L\'od\'z, Dav\'\i dek \v{S}imurda    & \verb"\L\'od\'z, Dav\'\i dek \v{S}imurda"    \\
+\textexclamdown Besa me mucho!        & \verb"\textexclamdown Besa me mucho!"        \\
+\end{tabular}
+\end{center}
+
+Еще некоторые символы, которые встречаются довольно часто:
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Результат}            & \textbf{Набираем}       \\ \hline
+\copyright                    & \verb"\copyright"       \\
+\dots                         & \verb"\dots"            \\
+\ldots                        & \verb"\ldots"           \\
+\S                            & \verb"\S"               \\
+\pounds                       & \verb"\pounds"          \\
+неразрывный пробел            & \verb"~"                \\ \hline
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\textbf{2. Дефис, короткое тире, длинное тире, минус}
+
+\bigskip
+
+Полиграфисты различают минимум 9 разных <<чёрточек>>: дефисоминус, дефис, минус, цифровая чёрточка, символ переноса, чёрточный буллит, короткое тире, длинное тире, горизонтальная черта.
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Название}&\textbf{Набор}&\textbf{Пробелы}     &\textbf{Пример}       \\ \hline
+дефис            & \verb"-"     & нет                 & кто-нибудь           \\
+                 &              & (левое переносится, &                      \\
+                 &              & правое нет)         &                      \\ \cline{2-4}
+                 & \verb|"~|    & нет                 & юго"~запад           \\
+                 &              & (оба не переносятся)&                      \\ \cline{2-4}
+                 & \verb|"=|    & нет                 & Соловьев"=Седой      \\
+                 &              & (оба переносятся)   &                      \\ \hline
+короткое тире    & \verb"--"    & нет                 & 5--7 яблок           \\
+                 &              & есть                & пять -- семь яблок   \\ \hline
+длинное тире     & \verb!"---!  & есть                & Москва "--- столица  \\
+                 &              &(левый неразрывный)  &                      \\ \cline{2-4}
+                 & \verb!---!   & есть                & формула              \\
+                 &              &(левый разрывный)    & Ньютона --- Лейбница \\ \hline
+минус            & \verb"$-$"   & не важно            & $\sqrt{x} - y$       \\ \hline
+\end{tabular}
+\end{center}
+
+
+Вообще говоря, если писать не цифрами, а словами, то следует различать по написанию следующие случаи:
+\begin{itemize}
+\item <<порежь три-четыре апельсина>> в смысле <<то ли одно, то ли другое>> "--- ставится дефис без пробелов;
+\item <<справлюсь за десять -- пятнадцать дней>> в смысле <<в диапазоне от 10 до 15 дней>> --- ставится короткое тире с пробелами.
+\end{itemize}
+
+Однако тут не все однозначно. Как, например, трактовать фразу <<Дай мне два-три рубля>>? Интересно, 2 рубля 50 копеек годится? В таких случаях рекомендуется не влезать в тонкости и ставить дефис.
+
+\newpage
+
+\textbf{3. Виды шрифтов}
+
+Для изменения вида шрифта могут использоваться как команды"=переключатели, так и команды с аргументами.
+
+\begin{center}
+\noindent\begin{tabular}{|c||l|l|}
+\hline
+\bfseries Эффект          & \bfseries Переключатель  &  \textbf{С аргументом}\\ \hline \multicolumn{3}{|c|}{\bf Выделение}                                                        \\ \hline
+\underline{Подчеркивание} & ---                      & \verb"\underline{Текст}"      \\
+\emph{Выделение}          & ---                      & \verb"\emph{Текст}"           \\ \hline
+\multicolumn{3}{|c|}{\bf Семейство (гарнитура)}                                      \\ \hline
+\textrm{С засечками}      & \verb"{\rmfamily Текст}" & \verb"\textrm{Текст}"         \\
+\textsf{Без засечек}      & \verb"{\sffamily Текст}" & \verb"\textsf{Текст}"         \\
+\texttt{Равноразмерный}   & \verb"{\ttfamily Текст}" & \verb"\texttt{Текст}"         \\ \hline
+\multicolumn{3}{|c|}{\bf Начертание}                                                 \\ \hline
+\textup{Прямой}           & \verb"{\upshape Текст}"  & \verb"\textup{Текст}"         \\
+\textit{Курсив}           & \verb"{\itshape Текст}"  & \verb"\textit{Текст}"         \\
+\textsl{Наклонный}        & \verb"{\slshape Текст}"  & \verb"\textsl{Текст}"         \\
+\textsc{Капитель}         & \verb"{\scshape Текст}"  & \verb"\textsc{Текст}"         \\ \hline
+\multicolumn{3}{|c|}{\bf Насыщенность}                                               \\ \hline
+\textmd{Средний (обычный)}& \verb"{\mdseries Текст}" & \verb"\textmd{Текст}"         \\
+\textbf{Полужирный}       & \verb"{\bfseries Текст}" & \verb"\textbf{Текст}"         \\ \hline
+\end{tabular}
+\end{center}
+
+При переходе от курсивного и наклонного шрифта к прямому при использовании команд-переключателей нужно ставить дополнительную команду \verb"\/" для увеличения пробела. Для команд с аргументами этого делать не нужно.
+
+\begin{center}
+\noindent\begin{tabular}{l|l}
+\textbf{Набор}                                & \textbf{Эффект}                        \\ \hline
+\verb"Упал {\itshape столб} Васе на голову"   & Упал {\itshape столб} Васе на голову   \\
+\verb"Упал {\itshape столб\/} Васе на голову" & Упал {\itshape столб\/} Васе на голову \\
+\verb"Упал \textit{столб} Васе на голову"     & Упал \textit{столб} Васе на голову     \\
+\end{tabular}
+\end{center}
+
+\bigskip
+
+<<В наследство>> от \LaTeX 2.09 и для совместимости с ранее набранными документами доступны команды-переключатели 
+\begin{center}
+\verb| \rm   \sf   \tt   \it   \sl   \em   \bf|
+\end{center}
+однако пользоваться ими \emph{настоятельно не рекомендуется}! 
+
+\medskip
+
+Помимо прочего, в \LaTeXe они работают не всегда корректно:
+
+\begin{center}
+\verb"{\rm Roman {\it Italic {\bf Bold-Italic}}}"
+
+{\rm Roman {\it Italic {\bf Bold-Italic}}}
+
+\bigskip
+
+\verb"{\rmfamily Roman {\itshape Italic {\bfseries Bold-Italic}}}"  
+
+{\rmfamily Roman {\itshape Italic {\bfseries Bold-Italic}}}
+
+\bigskip
+
+\verb"\textrm{Roman \textit{Italic \textbf{Bold-Italic}}}"
+
+\textrm{Roman \textit{Italic \textbf{Bold-Italic}}}
+
+\end{center}
+
+
+
+\newpage
+
+\textbf{4. Размеры шрифтов}
+
+\bigskip
+
+\begin{center}
+\noindent\begin{tabular}{|l|l|}
+\hline
+\bfseries     Размер              &\bfseries Команда    \\ \hline
+\tiny         Самый мелкий        &\verb"\tiny"         \\ \hline
+\scriptsize   Мелкий (как индекс) &\verb"\scriptsize"   \\ \hline
+\footnotesize Мелкий (как сноска) &\verb"\footnotesize" \\ \hline
+\small        Маленький           &\verb"\small"        \\ \hline
+              Обычный             &\verb"\normalsize"   \\ \hline
+\large        Увеличенный         &\verb"\large"        \\ \hline
+\Large        Большой             &\verb"\Large"        \\ \hline
+\LARGE        Очень большой       &\verb"\LARGE"        \\ \hline
+\Huge         Громадный           &\verb"\Huge"         \\ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\textbf{5. Абзацы}
+
+\bigskip
+
+\begin{center}
+Центрированный абзац ---\\ окружение \texttt{center}.\\[2mm]
+\verb"\begin{center} ... \end{center}"
+\end{center}
+
+\begin{flushleft}
+Абзац, \\выровненный по левому краю ---\\ окружение \texttt{flushleft}.\\[2mm]
+\verb"\begin{flushleft} ... \end{flushleft}"
+\end{flushleft}
+
+\begin{flushright}
+Абзац, \\выровненный по правому краю ---\\ окружение \texttt{flushright}.\\[2mm]
+\verb"\begin{flushright} ... \end{flushright}"
+\end{flushright}
+
+\bigskip
+
+\centerline{Одна строчка по центру --- команда \texttt{\symbol{`\\}centerline\{\ldots\}}}
+
+\bigskip
+
+{\raggedright
+Абзац вообще безо всякого выравнивания и без переносов --- команда \texttt{raggedright}. Обратите внимание, как она задается! Неочевидное положение фигурной скобки, закрывающей группу с форматируемым абзацем, связано с особенностью трансляции текста \TeX ом в dvi-файл. Дело в том, что \TeX\ форматирует абзац только после того, как встретит в~тексте пустую строку. Если не включить в группу эту пустую строку, команда будет фактически проигнорирована.
+
+}
+
+\newpage
+
+\textbf{6. Разрывы строк и абзацев. Переносы}
+
+
+\bigskip
+
+Основной способ разорвать абзац и начать новый --- это сделать в исходном файле пустую строку. \par Того же эффекта можно добиться, применяя команду \verb"\par".
+
+\bigskip
+
+Принудительно разорвать строку, не начиная нового абзаца,\\ можно командой \verb"\\".
+
+\bigskip
+
+Принудительно разорвать строку, не начиная нового абзаца,\linebreak можно и командой \verb"\linebreak", но она <<тянет>> строки.
+
+\bigskip
+
+В необязательном аргументе команды \verb"\\[0.3cm]" можно указать,\\[0.3cm] какой вертикальный пробел нужно вставить.
+
+\bigskip
+
+Если написать \verb"\\*" или \verb"\\*[0.3cm]", это будет означать, что на оборванной строке нельзя оканчивать страницу.
+
+\bigskip
+
+Необязательный аргумент команды \verb"\linebreak[X]" указывает <<желательность>> разрыва строки. $X=0$ писать бессмысленно, а $X=4$ эквивалентно команде без аргумента.
+
+\bigskip
+
+Команды \verb"\nolinebreak" и \verb"\nolinebreak[X]" действуют противоположно.
+
+\vspace{1cm}
+
+Ручная установка возможных мест переноса:
+
+\begin{center}
+\verb"до\-сто\-при\-ме\-ча\-тель\-ность"
+\end{center}
+
+Запрещение переноса слова:
+
+\begin{center}
+\verb"\mbox{достопримечательность}"
+\end{center}
+
+Запрещение переноса формулы:
+
+\begin{center}
+\verb"{$x+y+z+t+u+v+w=0$}"
+\end{center}
+
+Обучение \TeX а переносить слова (в преамбуле):
+
+\begin{center}
+\verb"\hyphenation{дезоксирибонуклеиновая кис-ло-та}"
+\end{center}
+
+\TeX{} не умеет сам переносить слова с диакритическими знаками.
+
+
+\newpage
+
+\textbf{7. Специальные абзацы}
+
+\bigskip
+
+Для оформления длинных цитат используются окружение \texttt{quote} (также \texttt{quotation} для очень длинных цитат, состоящих из нескольких абзацев), ведь как писал сам Дональд Кнут\footnote{Дональд Кнут (род. 10 января 1938 г.) --- американский учёный, профессор Стэнфордского и других университетов в разных странах, преподаватель и идеолог программирования, создатель настольных издательских систем \TeX{} и METAFONT.}:
+\begin{quote}
+Пользователей \TeX а можно называть \TeX никами, но только те, кто используют возможности \TeX а по максимуму, достойны называться \TeX пертами.
+\end{quote}
+
+\vspace{2cm}
+
+Для набора стихотворений предназначено специальное окружение \texttt{verse}:
+
+\begin{verse}
+Солнце взошло над Фудзиямой,\\
+Сакура расцвела на древних склонах,\\
+А кто-то сочинил эти дурацкие стихи для демонстрации возможностей ТеХа\ldots
+\end{verse}
+
+
+\newpage
+
+\textbf{8. Интервалы, отступы и разрывы страниц}
+
+\bigskip
+
+Интервалы и отступы являются параметрами абзацев, указывать их надо либо в преамбуле документа, либо в документе, оформляя так же, как упоминавшуюся выше команду \verb"\raggedright". Приведённые ниже команды позволяют создавать абзацы специальной формы, что бывает полезно, например, при организации обтекания рисунков.
+
+\bigskip
+
+\begin{center}
+\begin{tabular}{lp{8cm}}
+\bfseries Команда         & \bfseries Значение                                      \\ \hline
+\verb"\parindent=X"       & Отступ первой (красной) строки                          \\
+\verb"\noindent"          & Абзац без отступа (красной строки)                      \\
+\verb"\parskip=X"         & Вертикальный промежуток между абзацами                  \\ \hline
+\verb"\hangindent=X"      & Отступ второй и последующей строк от левого края        \\
+\verb"\hangindent=-X"     & Отступ второй и последующей строк от правого края       \\
+\verb"\hangafter=X"       & hangindent будет работать со строки номер Х             \\
+\verb"\hangafter=-X"      & hangindent будет работать со строками 1--Х              \\ \hline
+\verb"\enlargethispage{X}"& Увеличить или уменьшить высоту страницы на Х
+                            (pt, cm, mm\ldots\ или \verb"\baselineskip", т.е. строк)\\ \hline
+\verb"\smallskip"         & Маленький промежуток (полстроки)                        \\
+\verb"\medskip"           & Средний промежуток (строка)                             \\
+\verb"\bigskip"           & Большой промежуток (2 строки)                           \\ \hline
+\verb"\vspace{X}"         & Вертикальный промежуток заданного размера               \\
+\verb"\hspace{X}"         & Горизонтальный промежуток заданного размера             \\
+\end{tabular}
+\end{center}
+
+
+Управление разрывом страниц:
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\bfseries Команда      &\bfseries Значение                                  \\ \hline
+\verb"\newpage"        & Принудительный разрыв страницы                     \\
+\verb"\clearpage"      & Действует примерно так же, как \verb"\newpage"     \\
+\verb"\cleardoublepage"& Новая страница с нечетным номером (не всегда)      \\
+\verb"\pagebreak"      & Разрыв страницы с выравниваем по высоте            \\
+\verb"\pagebreak[X]"   & $X$ --- желательность разрыва страницы (0\ldots4)  \\
+\verb"\nopagebreak"    & Запрет на разрыв страниц в данном абзаце           \\
+\verb"\nopagebreak[X]" & $X$ --- нежелательность разрыва страницы (0\ldots4)\\ \hline
+\end{tabular}
+\end{center}
+
+
+\newpage
+
+\textbf{9. Единицы длины}
+
+Многие параметры, используемые в \TeX овских командах, являются единицами длины. В таблице представлены наиболее часто применяемые единицы длины.
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Обозначение} & \textbf{Название} & \textbf{Пояснение}    \\ \hline
+mm                   & миллиметр         &                       \\
+cm                   & сантиметр         & 10 миллиметров        \\
+in                   & дюйм              & 25.4 мм               \\
+pt                   & пункт             & $\approx 0.35$ мм     \\
+dd                   & пункт Дидо        & $\approx 1.07$ пункта \\
+pc                   & пика              & 12 пунктов            \\
+cc                   & цицеро            & 12 пунктов Дидо       \\ \hline
+em                   & \multicolumn{2}{|l|}{ширина буквы <<M>> текущего шрифта}    \\
+ex                   & \multicolumn{2}{|l|}{высота буквы <<x>> текущего шрифта}    \\ \hline
+\end{tabular}
+\end{center}
+
+\bigskip
+
+
+\textbf{10. Линейки}
+
+Линейками в типографском деле называют любые черные прямоугольники (в том числе и линии). В \TeX е для вывода линеек предусмотрено несколько команд:\\
+Команда \verb"\rule[X]{W}{H}" выводит прямоугольник высоты $H$, ширины $W$, сдвинутый по вертикали на $X$. (\emph{Примечание.} \textsl{Такая линейка трактуется \TeX ом как буква.})
+
+Примеры: \rule{1em}{1.5ex} ~ \rule{2mm}{10pt} ~ \rule[-5pt]{2em}{.5ex}
+
+\bigskip
+
+Команда \verb"\vrule" задает вертикальную линейку в тексте \vrule ~по высоте равной высоте строки.
+
+\smallskip
+
+\hrule
+
+\smallskip
+
+Команда \verb"\hrule" задает линейку МЕЖДУ абзацами. Эту команду рекомендуется обрамлять командами \verb"\smallskip", чтобы линия не сливалась с буквами.
+
+\bigskip
+
+Эти команды можно слегка модифицировать: указать в явном виде высоту горизонтальной и ширину вертикальной линейки:
+\begin{center}
+
+\verb"\hrule height 2mm"
+
+\smallskip
+
+\hrule height 2mm
+
+\end{center}
+
+
+\begin{center}
+
+\verb"\vrule width 0.1mm" \ \vrule width 0.1mm \\
+\verb"\vrule width 0.5mm" \ \vrule width 0.5mm \\
+\verb"\vrule width 1.0mm" \ \vrule width 1.0mm \\
+\verb"\vrule width 2.0mm" \ \vrule width 2.0mm \\
+
+\end{center}
+
+
+
+
+
+
+
+
+\end{document} 
