@@ -1,14 +1,15 @@
 \documentclass[12pt,a4paper]{article} 
 
-\usepackage[russian, english]{babel}
+\usepackage[russian]{babel}
 \usepackage[T2A]{fontenc} 
 \usepackage[utf8]{inputenc} 
-\usepackage{geometry}
-\geometry{a4paper, total = {170mm, 257mm}, left = 20mm, top = 20mm}
-
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
+
+\usepackage{geometry}
+\geometry{a4paper, total = {170mm, 257mm}, left = 20mm, top = 20mm}
 
 \frenchspacing 
 
@@ -226,6 +227,30 @@
     \pagebreak
 
     \begin{enumerate}
-        \item[2.] Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверъность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica)
+        \item[2.] Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверхность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica)
     \end{enumerate}
+
+    
+    Уравнение поверхности, выраженное через $ x, y, z $: 
+
+    \[
+        \begin{cases}
+            x = \cosh u \cos v
+            \\
+            y = 5 \sinh u
+            \\
+            z = \cosh u \sin v
+        \end{cases} 
+        \Leftrightarrow \ 
+        x^2 + z^2 - \frac{y^2}{25} = 1, 
+    \]
+
+    \noindent значит, данная поверхность -- однополостный гиперболоид с осью вдоль $ OY $
+
+    \begin{figure}[!h]
+        \includegraphics[width=0.8\textwidth]{Hyp.pdf}
+        \caption{Однополостный гиперболоид}
+        \label{fig:hyp}
+    \end{figure}
+
 \end{document}
