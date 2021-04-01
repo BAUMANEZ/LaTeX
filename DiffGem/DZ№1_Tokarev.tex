@@ -19,7 +19,7 @@
 \renewcommand{\theproblem}{\arabic{problem}.}
 \newcommand{\problem}{\refstepcounter{problem}\textbf{Задача~\theproblem~}}
 
-% convenience commands
+% convenient commands
 \newcommand{\boldVec}[1]{\vec{\mathbf #1}}
 \newcommand{\vectorProduct}[2]{\boldVec #1 \times \boldVec #2}
 \newcommand{\scalarProduct}[2]{(\boldVec #1, \boldVec #2)}
@@ -50,7 +50,7 @@
     \[ \boldVec r(u, v) = \{ \cosh u \cos v,\ 5 \sinh u,\ \cosh u \sin v \}. \]
 
     Вид кривой на поверхности и координаты точек: 
-    \[ \gamma \colon u = v;\ P_1(1, 0, 0);\ P_2(-\cosh \pi, 5 \sinh \pi, 0). \]
+    \[ \gamma \colon u = v,\ P_1(1, 0, 0),\ P_2(-\cosh \pi, 5 \sinh \pi, 0). \]
 
     \section*{Задачи: }
 
@@ -59,7 +59,7 @@
     
     \bigskip
 
-    Для того, чтобы вывести уравнение касательной плоскости к поверхности в точке, необходимо найти вектор к поверхности в данной точке. Сначала нужно взять частные производные $ \frac{\partial \boldVec r}{\partial u} = \boldVec r_u $ и $ \frac{\partial \boldVec r}{\partial v} = \boldVec r_v $: 
+    Для того, чтобы вывести уравнение касательной плоскости к поверхности в точке, необходимо найти вектор к поверхности в данной точке. Сначала нужно взять частные производные $ \frac{\partial \boldVec r}{\partial u} = \boldVec r_u $ и $ \frac{\partial \boldVec r}{\partial v} = \boldVec r_v \colon$
     \[
         \boldVec r_u = 
             \begin{pmatrix}
@@ -68,7 +68,7 @@
                 5\cosh u
                 \\
                 \sinh u \sin v
-            \end{pmatrix}\! ; \  
+            \end{pmatrix}\! , \  
         \boldVec r_v = 
             \begin{pmatrix}
                 -\cosh u \sin v
@@ -106,7 +106,7 @@
 
     Сразу можно заметить, что $ \boldVec r_u \times \boldVec r_v \ne \vec{\textbf 0}$ ни при каких значениях $ u \ \text{или} \ v $. Это означает, что все точки поверхности -- регулярные.
 
-    Посчитаем норму векторного призведения $ | \boldVec r_u \times \boldVec r_v | $: 
+    Посчитаем норму векторного призведения $ | \boldVec r_u \times \boldVec r_v | \colon$ 
     \[
         | \boldVec r_u \times \boldVec r_v | = \sqrt{25 \cosh^4 u + \sinh^2 y \cosh^2 u} = \cosh u \sqrt { 25 \cosh^2 u + \sinh^2 u }\, . 
     \]
@@ -128,11 +128,11 @@
         \centering
         \begin{tabular}{lcl}
             $
-                P_1: 
+                P_1 \colon
                 \begin{cases}
-                    \cosh u \cos v = 1;
+                    \cosh u \cos v = 1,
                     \\
-                    5 \sinh u = 0;
+                    5 \sinh u = 0,
                     \\
                     \cosh u \sin v = 0.
                 \end{cases} 
@@ -140,7 +140,7 @@
             & $ \Leftrightarrow $ & 
             $
                 \begin{cases}
-                    u_1 = 0;
+                    u_1 = 0,
                     \\
                     v_1 = 0.
                 \end{cases}
@@ -149,11 +149,11 @@
             \\ \\
 
             $
-                P_2: 
+                P_2 \colon
                 \begin{cases}
-                    \cosh u \cos v = -\cosh \pi;
+                    \cosh u \cos v = -\cosh \pi,
                     \\
-                    5 \sinh u =  5 \sinh \pi;
+                    5 \sinh u =  5 \sinh \pi,
                     \\
                     \cosh u \sin v = 0.
                 \end{cases}
@@ -161,7 +161,7 @@
             & $ \Leftrightarrow $ & 
             $
                 \begin{cases}
-                    u_2 = \pi;
+                    u_2 = \pi,
                     \\
                     v_2 = \pi.
                 \end{cases}
@@ -184,7 +184,7 @@
 
     \noindent тогда касательная плоскость имеет вид: 
     \[
-        T|_{P_1}: x - 1 = 0.
+        T|_{P_1} \colon x - 1 = 0.
     \]
 
 
@@ -200,40 +200,43 @@
         \end{pmatrix}\! , 
     \]
 
+    \pagebreak
+
     \noindent и касательная плоскость имеет вид: 
     \[
-        T|_{P_2}: 5 \cosh \pi \cdot x + \sinh \pi \cdot y + 5 = 0.
+        T|_{P_2} \colon 5 \cosh \pi \cdot x + \sinh \pi \cdot y + 5 = 0.
     \]
 
     \bigskip
 
     \begin{flushright}
         \begin{tabular}{rl}
-            \textbf{Ответ:} & Особых точек нет;
+            \textbf{Ответ:} & Особых точек нет,
 
             \\
 
-                            & $ T|_{P_1}: x - 1 = 0 $;
+                            & $ T|_{P_1} \colon x - 1 = 0 $,
 
             \\
 
-                            & $ T|_{P_2}: 5 \cosh \pi \cdot x + \sinh \pi \cdot y + 5 = 0 $.
+                            & $ T|_{P_2} \colon 5 \cosh \pi \cdot x + \sinh \pi \cdot y + 5 = 0 $.
         \end{tabular}
     \end{flushright}
 
+    \bigskip
 
     \problem Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверхность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica)
 
     \bigskip
     
-    Уравнение поверхности, выраженное через $ x, y, z $: 
+    Уравнение поверхности, выраженное через $ x, y, z \colon$
     \[
         \begin{cases}
-            x = \cosh u \cos v;
+            x = \cosh u \cos v,
             \\
-            y = 5 \sinh u;
+            y = 5 \sinh u,
             \\
-            z = \cosh u \sin v;
+            z = \cosh u \sin v,
         \end{cases} 
         \Leftrightarrow \ 
         x^2 + z^2 - \frac{y^2}{25} = 1, 
@@ -257,11 +260,11 @@
 
     \begin{flushright}
         \begin{tabular}{rl}
-            \textbf{Ответ:} & Однополостный гиперболоид;
+            \textbf{Ответ:} & Однополостный гиперболоид,
 
             \\
 
-                            & $ (u_0, v) $ -- окружности;
+                            & $ (u_0, v) $ -- окружности,
 
             \\
 
@@ -301,21 +304,23 @@
         \cos \alpha = \frac {
             (\boldVec \xi_1)^T \cdot \mathbb{G} \cdot \boldVec \xi_2
         } {
-            \sqrt{(\boldVec \xi_1)^T \cdot \mathbb{G} \cdot \boldVec \xi_1} \cdot \sqrt{(\boldVec \xi_1)^T \cdot \mathbb{G} \cdot \boldVec \xi_1}
+            \sqrt{(\boldVec \xi_1)^T \cdot \mathbb{G} \cdot \boldVec \xi_1}
+             \cdot 
+             \sqrt{(\boldVec \xi_2)^T \cdot \mathbb{G} \cdot \boldVec \xi_2}
         }
     \]
     
-    Для нахождения точек пересечения и для вычисления векторов скоростей параметризуем кривые $ l_1 $ и $ l_2 $:
+    Для нахождения точек пересечения и для вычисления векторов скоростей параметризуем кривые $ l_1 $ и $ l_2 \colon$
     \begin{table}[h]
         \centering
         \begin{tabular}{lcl}
             $
-                l_1: u = v^2
+                l_1 \colon u = v^2
             $ 
             & $ \Leftrightarrow $ & 
             $
                 \begin{cases}
-                    u_1 = t^2;
+                    u_1 = t^2,
                     \\
                     v_1 = t.
                 \end{cases}
@@ -324,12 +329,12 @@
             \\ \\
 
             $
-                l_2: u = v
+                l_2 \colon u = v
             $ 
             & $ \Leftrightarrow $ & 
             $
                 \begin{cases}
-                    u_2 = t;
+                    u_2 = t,
                     \\
                     v_2 = t,
                 \end{cases}
@@ -340,13 +345,13 @@
     \noindent теперь найдем их точки пересечения:
     \[
         \begin{cases}
-            t^2 = t;
+            t^2 = t,
             \\
             t = t.
         \end{cases}
         \Leftrightarrow \ 
         \begin{cases}
-            t_1 = 0;
+            t_1 = 0,
             \\
             t_2 = 1.
         \end{cases}
@@ -464,11 +469,11 @@
 
     \begin{flushright}
         \begin{tabular}{rl}
-            \textbf{Ответ:} & $ I = (\sinh^2 u + 25 \cosh^2 u)du^2 + (\cosh^2 u) dv^2 $;
+            \textbf{Ответ:} & $ I = (\sinh^2 u + 25 \cosh^2 u)du^2 + (\cosh^2 u) dv^2 $,
 
             \\
 
-                            & $ \alpha_1 = \approx 1.34^{\circ} $;
+                            & $ \alpha_1 \approx 1.34^{\circ} $,
 
             \\
 
@@ -476,11 +481,443 @@
         \end{tabular}
     \end{flushright}
 
+    \bigskip
 
-    % $ E(u,v) = \scalarProduct{r_u}{r_u} = \sinh^2 u + 25 \cosh^2 u $,
-    %         \\ \\
-    %         $ M(u,v) = \scalarProduct{r_u}{r_v} = 0 $,
-    %         \\ \\
-    %         $ G(u,v) = \scalarProduct{r_v}{r_v} = \cosh^2 u $,
+    \problem Вычислить вторую квадратичную форму поверхности. Определить типы точек поверхности.
 
+    \bigskip
+
+    \[
+        \boldVec{r}_{uu} = 
+            \begin{pmatrix}
+                \cosh u \cos v
+                \\
+                5 \sinh u
+                \\
+                \cosh u \sin v
+            \end{pmatrix}
+            \!,\
+        \boldVec{r}_{uv} = 
+            \begin{pmatrix}
+                - \sinh u \sin v
+                \\
+                0
+                \\
+                \sinh u \cos v
+            \end{pmatrix}
+            \!,\ 
+        \boldVec{r}_{vv} = 
+            \begin{pmatrix}
+                - \cosh u \cos v
+                \\
+                0
+                \\
+                - \cosh u \sin v
+            \end{pmatrix}\! .
+    \]
+
+    \pagebreak
+
+    Вычислим коэффициенты второй квадратичной формы:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l}
+            $ L = \scalarProduct{r_{uu}}{n} = \dfrac{5}{\sqrt{25\cosh^2 + \sinh^2}}
+            $,
+            \\ \\
+            $ M = \scalarProduct{r_{uv}}{n} = 0
+            $,
+            \\ \\
+            $ L = \scalarProduct{r_{vv}}{n} = -\dfrac{5 \cosh^2 u}{\sqrt{25\cosh^2 + \sinh^2}}
+            $,
+        \end{tabular}
+    \end{table}
+
+    \noindent то есть матрица второй квадратичной формы имеет вид:
+    \[
+        \mathbb{B} = \dfrac{5}{\sqrt{25\cosh^2 + \sinh^2}}
+        \begin{pmatrix}
+            1 & 0
+            \\
+            0 & -\cosh^2 u
+        \end{pmatrix}\!, 
+    \]
+
+    \noindent а значит все точки поверхности -- гиперболические.
+
+    \begin{flushright}
+        \begin{tabular}{rl}
+            \textbf{Ответ:} & $ I\!I = \left(\dfrac{5}{\sqrt{25\cosh^2 + \sinh^2}} \right)\!du^2 - \left(\dfrac{5 \cosh^2 u}{\sqrt{25\cosh^2 + \sinh^2}} \right)\!dv^2 $,
+
+            \\[5mm]
+
+                            & Все точки поверхности -- гиперболические.
+        \end{tabular}
+    \end{flushright}
+
+    \bigskip
+
+    \problem Найти главные направления и главные кривизны в точках $ P_1, P_2 $. Вычислить среднюю и гауссову кривизны поверхности в этих точках.
+
+    \bigskip
+
+    Найдем главные кривизны и главные направления в точке $ P_1 \colon $
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c}
+            $ \mathbb{B}|_{P_1} = 
+                \begin{pmatrix}
+                    1 & 0
+                    \\
+                    0 & -1
+                \end{pmatrix}
+            $,
+            \\ \\
+            $ \mathbb{G}|_{P_1} = 
+                \begin{pmatrix}
+                    25 & 0
+                    \\
+                    0 & 1
+                \end{pmatrix}
+            $,
+            \\ \\
+            $
+            \det (\mathbb{B}|_{P_1} - k \cdot \mathbb{G}|_{P_1}) = (k + 1)(k - \frac{1}{25}) 
+            $.
+        \end{tabular}
+    \end{table}
+
+    Главное направление, соответствующее главной кривизне $k_1 = -1 \colon $
+    \[
+        \begin{pmatrix}
+            26 & 0
+            \\
+            0  & 0
+        \end{pmatrix}
+        \,\Rightarrow\,
+        \boldVec \xi_1 = c_1
+            \begin{pmatrix}
+                1
+                \\
+                0
+            \end{pmatrix}\! ,
+    \]
+
+    Главное направление, соответствующее главной кривизне $k_2 = \frac{1}{25} \colon $
+    \[
+        \begin{pmatrix}
+            0 & 0
+            \\
+            0 & 24
+        \end{pmatrix}
+        \,\Rightarrow\,
+        \boldVec \xi_2 = c_2
+            \begin{pmatrix}
+                0
+                \\
+                1
+            \end{pmatrix}\! .
+    \]
+
+    \pagebreak
+
+    Далее найдем главные кривизны и главные направления в точке $ P_2 \colon $
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c}
+            $ \mathbb{B}|_{P_2} = \dfrac{5}{\sqrt{25\cosh^2 \pi + \sinh^2 \pi}}
+                \begin{pmatrix}
+                    1 & 0
+                    \\
+                    0 & -\cosh^2 \pi
+                \end{pmatrix}
+            $,
+            \\ \\
+            $ \mathbb{G}|_{P_2} = 
+                \begin{pmatrix}
+                    \sqrt{25\cosh^2 \pi + \sinh^2 \pi} & 0
+                    \\
+                    0                          & -\cosh^2 \pi
+                \end{pmatrix}
+            $,
+            \\ \\
+            $
+            \det(\mathbb{B}|_{P_2} - k \cdot \mathbb{G}|_{P_2}) = \left(k - \dfrac{5}{(25 \cosh^2 \pi + \sinh^2 \pi)^{\frac{3}{2}}}\right) \left(k + \dfrac{5}{\sqrt{25 \cosh^2 \pi + \sinh^2 \pi}} \right)
+            $.
+        \end{tabular}
+    \end{table}
+
+    Главное направление, соответствующее главной кривизне $k_3 = \dfrac{5}{(25 \cosh^2 \pi + \sinh^2 \pi)^{\frac{3}{2}}} \colon $
+    \[
+        \boldVec \xi_3 = c_3
+            \begin{pmatrix}
+                1
+                \\
+                0
+            \end{pmatrix}\! ,
+    \]
+
+    Главное направление, соответствующее главной кривизне $k_4 = -\dfrac{5}{\sqrt{25 \cosh^2 \pi + \sinh^2 \pi}} \colon $
+    \[
+        \boldVec \xi_4 = c_4
+            \begin{pmatrix}
+                0
+                \\
+                1
+            \end{pmatrix}\! .
+    \]
+
+    Наконец, можно вычислить средние и гауссовы кривизны в точках $ P_1, P_2 \colon$
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l}
+           $ K_{P_1} =  k_1 \cdot k_2 = -0.04 $,
+           \\ \\
+           $ K_{P_2} =  k_3 \cdot k_4 = -\dfrac{5}{(25\cosh^2 \pi + \sin^2 \pi)^2} $,
+           \\ \\
+           $ H_{P_1} =  \dfrac{k_1 + k_2}{2} = -0.48 $,
+           \\ \\
+           $ H_{P_2} =  \dfrac{k_3 + k_4}{2} = \dfrac{5}{2} \cdot \dfrac{1 - (25\cosh^2 \pi + \sin^2 \pi)^2}{(25\cosh^2 \pi + \sin^2 \pi)^{\frac{3}{2}}} $\,{.}
+        \end{tabular}
+    \end{table}
+
+    \pagebreak
+
+    \problem Составить уравнения линий кривизны, асимптотических и геодезических линий для рассматриваемой поверхности. Привести примеры решения этих уравнений
+
+    \bigskip
+    
+    Первое семейство линий кривизны:
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l}
+            $
+                \begin{cases}
+                    \dot u = 1,
+                    \\
+                    \dot v = 0.
+                \end{cases}
+                \Leftrightarrow\ 
+                \begin{cases}
+                    u = t + C_1,
+                    \\
+                    v = C_2,
+                \end{cases}
+                C_1, C_2 \in \mathbb{R},
+            $
+            \\ \\
+            $
+                r(t) =
+                    \begin{pmatrix}
+                        \cosh(t + C_1) \cos C_2F
+                        \\
+                        5\sinh(t + C_1)
+                        \\
+                        \cosh(t + C_1) \sin C_2
+                    \end{pmatrix}\! .
+            $
+        \end{tabular}
+    \end{table}
+
+    Второе семейство линий кривизны:
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l}
+            $
+                \begin{cases}
+                    \dot u = 0,
+                    \\
+                    \dot v = 1.
+                \end{cases}
+                \Leftrightarrow\ 
+                \begin{cases}
+                    u = C_3,
+                    \\
+                    v = t + C_4,
+                \end{cases}
+                C_3, C_4 \in \mathbb{R},
+            $
+            \\ \\
+            $
+                r(t) =
+                    \begin{pmatrix}
+                        \cosh(C_3) \cos(t + C_4)
+                        \\
+                        5\sinh(C_3)
+                        \\
+                        \cosh(C_3) \sin(t + C_4)
+                    \end{pmatrix}\! .
+            $
+        \end{tabular}
+    \end{table}
+
+    Асимптотические линии:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{l}
+            $
+                \dfrac{5}{\sqrt{25\cosh^2 u + \sinh^2 u}}
+                \begin{pmatrix}
+                    \dot u & \dot v
+                \end{pmatrix}
+                \begin{pmatrix}
+                    1 & 0
+                    \\
+                    0 & -\cosh^2 u
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \dot u & \dot v
+                \end{pmatrix} = 0,
+            $
+            \\ \\
+            $
+                \dot u^2 - \dot v^2 \cosh^2 u = 0
+                \ \Rightarrow \ 
+                du = \pm  \cosh u \, dv,
+            $
+            \\ \\
+            $
+            \displaystyle\int{}{\dfrac{du}{\cosh u}} = \pm \int{}{dv} = \pm v + C, C \in \mathbb{R},
+            $
+            \\ \\
+            $
+                2\arctan e^u = \pm v + C, C \in \mathbb{R}.
+            $
+        \end{tabular}
+    \end{table}
+
+    Геодезические линии при $ u = u(v) \colon $
+    \[
+        \boldVec r =
+            \begin{pmatrix}
+                \cosh u(v) \cos v
+                \\
+                5\sinh u(v)
+                \\
+                \cosh u(v) \sin v
+            \end{pmatrix}\!,\  
+        \boldVec n =
+            \begin{pmatrix}
+                5\cosh u(v) \cos v
+                \\
+                -\sinh u(v)
+                \\
+                5\cosh u(v) \sin v
+            \end{pmatrix}\!,
+     \]
+
+     \pagebreak
+        
+     \begin{table}[h]
+        \centering
+        \begin{tabular}{c}
+            $
+                \boldVec{r}\,' = 
+                    \begin{pmatrix}
+                        u'(v) \sinh u(v) \cos v - \cosh u(v) \sin v
+                        \\
+                        5u'(v) \cosh u
+                        \\
+                        u'(v) \sinh u(v) \sin v + \cosh u(v) \cos v
+                    \end{pmatrix}\!,\ 
+            $
+            \\ \\
+            $
+            \boldVec{r}\,'' = 
+                \begin{pmatrix}
+                    u''(v) \sinh u(v) \cos v + (u'(v))^2 \cosh u(v) \cos v - 2u'(v) \sinh u(v) \sin v + \cosh u(v) \cos v
+                    \\
+                    5(u''(v) \cosh u + (u'(v))^2 \sinh u)
+                    \\
+                    u''(v) \sinh u(v) \sin v + (u'(v))^2 \cosh u(v) \cos v + 2u'(v) \sinh u(v) \cos v - \cosh u(v) \sin v
+                \end{pmatrix}\!,
+            $
+        \end{tabular}
+    \end{table}
+
+    \noindent то есть смешанное произведение полученный векторов $ (r',r'',n) $ не равно 0 ни при каких значениях $ v $, поэтому можно сделать вывод, что геодезических линий нет.
+
+    \bigskip
+
+    \problem Вычислить кривизну кривой $ \gamma $ в точках $ P_1, P_2 $. В одной из точек построить реперь Френе.
+
+    \bigskip
+
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{l}
+            $
+                \boldVec r = 
+                    \begin{pmatrix}
+                        \cosh u \cos u
+                        \\
+                        5\sinh u
+                        \\
+                        \cosh u \sin u
+                    \end{pmatrix}\!,\ 
+                \dot{\boldVec r} = 
+                \begin{pmatrix}
+                    \sinh u \cos u - \cosh u \sin u
+                    \\
+                    5\cosh u
+                    \\
+                    \sinh u \sin u + \cosh u \cos u
+                \end{pmatrix}\!,\
+                \ddot{\boldVec r} = 
+                    \begin{pmatrix}
+                        -2\sinh u \sin u
+                        \\
+                        5 \sinh u
+                        \\
+                        2\sinh u \cos u
+                    \end{pmatrix}\! .    
+            $
+            \\ \\ \\
+            $
+                \ddot{\boldVec r} \times \ddot{\boldVec r} = 
+                    \begin{vmatrix}
+                        i & j & k
+                        \\
+                        \sinh u \cos u - \cosh u \sin u &  5\cosh u & \sinh u \sin u + \cosh u \cos u
+                        \\
+                        -2\sinh u \sin u & 5 \sinh u & 2\sinh u \cos u
+                    \end{vmatrix} = 
+            $
+            \\ \\
+            $
+                = \begin{pmatrix}
+                    5\sinh u \cosh u \cos u - 5\sinh^2 u \sin u
+                    \\
+                    -2\sinh^2 u
+                    \\
+                    5\sinh u \cosh u \sin u - 5\sinh^2 u \cos u
+                \end{pmatrix}
+            $
+            \\ \\ \\
+            $
+                | \ddot{\boldVec r} \times \ddot{\boldVec r} | = \sqrt{25 \sinh^2 u + 54 \sinh^4 u},\  
+                | \dot{\boldVec r} | = \sqrt{26 + 27 \sinh^2 u}.
+            $
+        \end{tabular}
+    \end{table}
+
+    Вычилсим кривизны в точках $ P_1, P_2 \colon $
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{l}
+            $
+                k|_{P_1} = \sqrt{\dfrac{25 \sinh^2 0 + 54 \sinh^4 0}{26 + 27 \sinh^2 0}} = 0,
+            $
+            \\ \\
+            $
+                k|_{P_2} = \sqrt{\dfrac{25 \sinh^2 \pi + 54 \sinh^4 \pi}{26 + 27 \sinh^2 \pi}} \approx 0.0045.
+            $
+        \end{tabular}
+    \end{table}
+
+    \pagebreak
+
+    Построим репер Френе в точке $ P_2 $ (в точке $ P_1$ репер Френе не определен, потому что кривизна в этой точке $ = 0$)
 \end{document}
