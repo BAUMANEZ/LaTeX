@@ -876,7 +876,7 @@
             $
             \\ \\ \\
             $
-                \ddot{\boldVec r} \times \ddot{\boldVec r} = 
+                \dot{\boldVec r} \times \ddot{\boldVec r} = 
                     \begin{vmatrix}
                         i & j & k
                         \\
@@ -919,5 +919,42 @@
 
     \pagebreak
 
-    Построим репер Френе в точке $ P_2 $ (в точке $ P_1$ репер Френе не определен, потому что кривизна в этой точке $ = 0$)
+    Построим репер Френе в точке $ P_2 $ (в точке $ P_1$ репер Френе не определен, потому что кривизна в этой точке $ = 0$):
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{l}
+            $
+                \boldVec{\tau} = \dfrac{\dot{\boldVec{r}}}{|\dot{\boldVec{r}}|} = \dfrac{1}{\sqrt{26 \cosh^2 \pi + \sinh^2 \pi}} 
+                    \begin{pmatrix}
+                        -\sinh \pi 
+                        \\
+                        5 \cosh \pi
+                        \\
+                        -\cosh \pi
+                    \end{pmatrix}\!,
+            $
+            \\ \\ 
+            $
+                \boldVec{\beta} = \dfrac{\ddot{\boldVec r} \times \ddot{\boldVec r}}{ | \ddot{\boldVec r} \times \ddot{\boldVec r} |} = \dfrac{1}{\sqrt{25\cosh^2 \pi + 29\sinh^2 \pi}} 
+                    \begin{pmatrix}
+                        -5\cosh \pi 
+                        \\
+                        -2\sinh \pi
+                        \\
+                        -5\sinh \pi 
+                    \end{pmatrix}\!,
+            $
+        \end{tabular}
+    \end{table}
+    \[
+        \boldVec{\nu} = \vectorProduct{\tau}{\beta} = \dfrac{1}{\sqrt{(26 \cosh^2 \pi + \sinh^2 \pi) \cdot (25\cosh^2 \pi + 29\sinh^2 \pi)}}
+            \begin{pmatrix}
+                27 \sinh \pi \cosh \pi
+                \\
+                -1
+                \\
+                -25 \cosh^2 \pi - 2\sinh^2 \pi
+            \end{pmatrix}\!.
+    \]
+
 \end{document}
