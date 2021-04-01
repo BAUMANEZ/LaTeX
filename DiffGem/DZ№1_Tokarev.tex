@@ -7,11 +7,15 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
-
 \usepackage{geometry}
 \geometry{a4paper, total = {170mm, 257mm}, left = 20mm, top = 20mm}
-
 \frenchspacing 
+
+% counter
+\newcounter{problem}
+\renewcommand{\theproblem}{\arabic{problem}.}
+\newcommand{\problem}{\refstepcounter{problem}\textbf{Задача~\theproblem~}}
+
 
 \begin{document}
     \begin{center}
@@ -43,9 +47,9 @@
     \section*{Задачи: }
 
 
-    \begin{enumerate}
-        \item Найти особые точки параметризированной поверхности. Составить уравнение касательной к поверхности в точках $ P_1 $ и $ P_2 $
-    \end{enumerate}
+    \hspace{7mm}\problem Найти особые точки параметризированной поверхности. Составить уравнение касательной к поверхности в точках $ P_1 $ и $ P_2 $
+    
+    \bigskip
 
     Для того, чтобы вывести уравнение касательной плоскости к поверхности в точке, необходимо найти вектор нормали к поверхности в точке. Сначала нужно взять частные производные $ \frac{\partial \vec{\textbf r}}{\partial u} = \vec{\textbf r}_u $ и $ \frac{\partial \vec{\textbf r}}{\partial v} = \vec{\textbf r}_v $: 
 
@@ -226,10 +230,9 @@
 
     \pagebreak
 
-    \begin{enumerate}
-        \item[2.] Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверхность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica)
-    \end{enumerate}
+    \problem Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверхность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica)
 
+    \bigskip
     
     Уравнение поверхности, выраженное через $ x, y, z $: 
 
@@ -248,6 +251,7 @@
     \noindent значит, данная поверхность -- однополостный гиперболоид с осью вдоль $ OY $
 
     \begin{figure}[!h]
+        \centering
         \includegraphics[width=0.8\textwidth]{Hyp.pdf}
         \caption{Однополостный гиперболоид}
         \label{fig:hyp}
