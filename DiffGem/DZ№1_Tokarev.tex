@@ -3,16 +3,14 @@
 \usepackage[russian]{babel}
 \usepackage[T2A]{fontenc} 
 \usepackage[utf8]{inputenc} 
-\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
-\usepackage{geometry}
+\usepackage{fn2kursstyle}[greekit]
 
-\geometry{a4paper, total = {170mm, 257mm}, left = 20mm, top = 20mm}
-\frenchspacing 
-
-\renewcommand{\baselinestretch}{1.3}
+\frenchspacing
+\counterwithout{equation}{section}
+\counterwithout{figure}{section}
 
 % counter
 \newcounter{problem}
@@ -20,9 +18,9 @@
 \newcommand{\problem}{\refstepcounter{problem}\textbf{Задача~\theproblem~}}
 
 % convenient commands
-\newcommand{\boldVec}[1]{\vec{\mathbf #1}}
+\newcommand{\boldVec}[1]{\mathbf #1}
 \newcommand{\vectorProduct}[2]{\boldVec #1 \times \boldVec #2}
-\newcommand{\scalarProduct}[2]{(\boldVec #1, \boldVec #2)}
+\newcommand{\scalarProduct}[2]{(\boldVec #1,\, \boldVec #2)}
 
 \begin{document}
     \begin{center}
@@ -30,7 +28,7 @@
             {\Large
                 Дифференциальная геометрия
                 \\
-                Домашнее задание №1
+                Домашнее задание №\,1
                 \\
                 <<Кривые и поверхности в пространстве>>
                 \\
@@ -42,135 +40,149 @@
         }
     \end{center}
 
-    \section*{Дано: }
+    \section-{Дано}
 
-    \hspace{5mm} Поверхность задана параметрически уравнениями $ S \colon \boldVec r = \boldVec r(u, v), \  u, v \in \mathbb{R} $.
+    Поверхность $ S $ задана параметрически уравнениями:
+    \begin{equation}
+        \label{paramSurfaceEq}
+        \boldVec r(u, v) = 
+            \begin{pmatrix}
+                \ch u \cos v
+                \\
+                5 \sh u
+                \\
+                \ch u \sin v 
+            \end{pmatrix}\!,\quad
+        u,\, v \in \mathbb{R}.
+    \end{equation}
 
-    Уравнение поверхности: 
-    \[ \boldVec r(u, v) = \{ \cosh u \cos v,\ 5 \sinh u,\ \cosh u \sin v \}. \]
+    Уравнение кривой на поверхности: 
+    \begin{equation}
+        \label{curveEq}
+        \gamma \colon u = v.
+    \end{equation} 
 
-    Вид кривой на поверхности и координаты точек: 
-    \[ \gamma \colon u = v,\ P_1(1, 0, 0),\ P_2(-\cosh \pi, 5 \sinh \pi, 0). \]
+    Координаты точек:
+    \begin{equation}
+        \label{points}
+        P_1(1, 0, 0);\quad P_2(-\ch \pi, 5 \sh \pi, 0). 
+    \end{equation}
 
-    \section*{Задачи: }
+    \section-{Задачи}
 
-
-    \hspace{7mm}\problem Найти особые точки параметризированной поверхности. Составить уравнение касательной к поверхности в точках $ P_1 $ и $ P_2 $.
+    \problem Найти особые точки параметризированной поверхности. Составить уравнение касательной к поверхности в точках $ P_1 $ и $ P_2 $.
     
     \bigskip
 
-    Для того, чтобы вывести уравнение касательной плоскости к поверхности в точке, необходимо найти вектор к поверхности в данной точке. Сначала нужно взять частные производные $ \frac{\partial \boldVec r}{\partial u} = \boldVec r_u $ и $ \frac{\partial \boldVec r}{\partial v} = \boldVec r_v \colon$
+    Для того, чтобы вывести уравнение касательной плоскости к поверхности в точке, необходимо найти вектор нормали к поверхности в данной точке. Сначала нужно \\[3pt]взять частные производные $ \dfrac{\partial \boldVec r}{\partial u} = \boldVec r_u $ и $ \dfrac{\partial \boldVec r}{\partial v} = \boldVec r_v \colon$
+
     \[
         \boldVec r_u = 
             \begin{pmatrix}
-                \sinh u \cos v
+                \sh u \cos v
                 \\
-                5\cosh u
+                5\ch u
                 \\
-                \sinh u \sin v
-            \end{pmatrix}\! , \  
+                \sh u \sin v
+            \end{pmatrix}\! , \quad  
         \boldVec r_v = 
             \begin{pmatrix}
-                -\cosh u \sin v
+                -\ch u \sin v
                 \\
                 0
                 \\
-                \cosh u \cos v
+                \ch u \cos v
             \end{pmatrix}\! ,
     \]
 
+    \pagebreak
+
     \noindent затем векторно их перемножить:
-    \[
-        \vectorProduct{r _u}{r_v} = 
+    \begin{equation}
+        \label{vecProd}
+        \begin{split}
+            \vectorProduct{r _u}{r_v} & = 
             \begin{vmatrix}
-                i && j && k
+                \boldVec i && \boldVec j && \boldVec k
                 \\
-                \sinh u \cos v && 5\cosh u && \sinh u \sin v
+                \sh u \cos v && 5\ch u && \sh u \sin v
                 \\
-                -\cosh u \sin v && 0 && \cosh u \cos v
-            \end{vmatrix}
-        =
-    \]
+                -\ch u \sin v && 0 && \ch u \cos v
+            \end{vmatrix} = \boldVec i\,(5 \ch^2 u \cos u )\, - 
+            \\[0.4em]
+            & - \boldVec j\,(\sh u \ch u \cos^2 v + \sh u \ch u \sin^2 v) + \boldVec k\,(5 \ch^2 u \sin v) =
+            \\[0.4em]
+            & = \begin{pmatrix}
+                5 \ch^2 u \cos v
+                \\
+                -\sh u \ch u
+                \\
+                5 \ch^2 u \sin v
+            \end{pmatrix}\! .
+        \end{split}
+    \end{equation}
 
-    \noindent $ = \boldVec i\,(5 \cosh^2 u \cos u ) + \boldVec j\,(\sinh u \cosh u \cos^2 - \sinh u \cosh u \sin^2 v) + \boldVec k\,(5 \cosh^2 u \sin v) $
-    \[
-       \vectorProduct{r_u}{r_v} =
-        \begin{pmatrix}
-            5 \cosh^2 u \cos v
-            \\
-            -\sinh u \cosh u
-            \\
-            5 \cosh^2 u \sin v
-        \end{pmatrix}\! .
-    \]
-
-    Сразу можно заметить, что $ \boldVec r_u \times \boldVec r_v \ne \vec{\textbf 0}$ ни при каких значениях $ u \ \text{или} \ v $. Это означает, что все точки поверхности -- регулярные.
+    Координаты вектора \eqref{vecProd} не обращаются в $ 0 $ одновременно, поэтому $ \forall u,\, v \in \mathbb{R}\colon $ $ \boldVec r_u \times \boldVec r_v \ne \boldVec{0}$. Это означает, что все точки поверхности регулярные.
 
     Посчитаем норму векторного призведения $ | \boldVec r_u \times \boldVec r_v | \colon$ 
     \[
-        | \boldVec r_u \times \boldVec r_v | = \sqrt{25 \cosh^4 u + \sinh^2 y \cosh^2 u} = \cosh u \sqrt { 25 \cosh^2 u + \sinh^2 u }\, . 
+        | \boldVec r_u \times \boldVec r_v | = \sqrt{25 \ch^4 u + \sh^2 y \ch^2 u} = \ch u \sqrt { 25 \ch^2 u + \sh^2 u }\, , 
     \]
 
-    Таким образом, вектор нормали $ \vec{\textbf n} $ имеет следующий вид: 
-    \[
-        \vec{\textbf n} = \frac{\boldVec r_u \times \boldVec r_v}{| \boldVec r_u \times \boldVec r_v |} = \frac{1}{\sqrt{25 \cosh^2 u + \sinh^2 u}}
+    \noindent таким образом, вектор нормали $ \vec{\textbf n} $ будет равен: 
+    \begin{equation}
+        \label{normVec}
+        \vec{\textbf n} = \frac{\boldVec r_u \times \boldVec r_v}{| \boldVec r_u \times \boldVec r_v |} = \frac{1}{\sqrt{25 \ch^2 u + \sh^2 u}}
         \begin{pmatrix}
-            5 \cosh u \cos v
+            5 \ch u \cos v
             \\
-            -\sinh u
+            -\sh u
             \\
-            5 \cosh u \sin v
+            5 \ch u \sin v
         \end{pmatrix} \! .
-    \]
+    \end{equation}
 
-    Выразим координаты точек $ P_1 $ и $ P_2 $ через $ u \ \text{и} \ v $. Для этого приравняем координаты уравнения поверхности $ \boldVec r(u, v) $ к координатам этих точек:
+    Выразим координаты точек $ P_1 $ и $ P_2 $ через $ u \ \text{и} \ v $. Для этого подставим их декартовы координаты в уравнение поверхности \eqref{paramSurfaceEq}:
     \begin{table}[h]
         \centering
-        \begin{tabular}{lcl}
+        \begin{tabular}{l}
             $
                 P_1 \colon
-                \begin{cases}
-                    \cosh u \cos v = 1,
-                    \\
-                    5 \sinh u = 0,
-                    \\
-                    \cosh u \sin v = 0.
-                \end{cases} 
-            $ 
-            & $ \Leftrightarrow $ & 
+                    \begin{cases}
+                        \ch u \cos v = 1,
+                        \\
+                        5 \sh u = 0,
+                        \\
+                        \ch u \sin v = 0
+                    \end{cases}
+                \Leftrightarrow \quad
+                    \begin{cases}
+                        u_1 = 0,
+                        \\
+                        v_1 = 0
+                    \end{cases}
             $
-                \begin{cases}
-                    u_1 = 0,
-                    \\
-                    v_1 = 0.
-                \end{cases}
-            $
-
             \\ \\
-
             $
                 P_2 \colon
-                \begin{cases}
-                    \cosh u \cos v = -\cosh \pi,
-                    \\
-                    5 \sinh u =  5 \sinh \pi,
-                    \\
-                    \cosh u \sin v = 0.
-                \end{cases}
-            $ 
-            & $ \Leftrightarrow $ & 
+                    \begin{cases}
+                        \ch u \cos v = -\ch \pi,
+                        \\
+                        5 \sh u =  5 \sh \pi,
+                        \\
+                        \ch u \sin v = 0.
+                    \end{cases}
+                \Leftrightarrow \quad
+                    \begin{cases}
+                        u_2 = \pi,
+                        \\
+                        v_2 = \pi
+                    \end{cases}
             $
-                \begin{cases}
-                    u_2 = \pi,
-                    \\
-                    v_2 = \pi.
-                \end{cases}
-            $
-
         \end{tabular}
     \end{table}
 
-    Теперь можно найти нормали касательных плоскостей в точках $ P_1 $ и $ P_2 $ соответсвенно. В точке $ {P_1} $ вектор единичной нормали равен:
+    Теперь можно найти нормали касательных плоскостей в точках $ P_1 $ и $ P_2 $ соответсвенно. В точке $ {P_1} $ вектор единичной нормали \eqref{normVec} равен:
     \[
         \vec{\textbf n}|_{P_1} =
         \begin{pmatrix}
@@ -182,95 +194,66 @@
         \end{pmatrix}\! ,
     \]
 
-    \noindent тогда касательная плоскость имеет вид: 
+    \noindent тогда уравнение касательной плоскости $ T|_{P_1} $ имеет вид: 
     \[
-        T|_{P_1} \colon x - 1 = 0.
+        x - 1 = 0.
     \]
 
-
-    В точке $ {P_2} $ вектор единичной нормали равен:
+    В точке $ {P_2} $ вектор единичной нормали \eqref{normVec} равен:
     \[
-        \vec{\textbf n}|_{P_2} = \frac{1}{\sqrt{25 \cosh^2 \pi + \sinh^2 \pi}}
+        \vec{\textbf n}|_{P_2} = \frac{1}{\sqrt{25 \ch^2 \pi + \sh^2 \pi}}
         \begin{pmatrix}
-            -5 \cosh \pi
+            -5 \ch \pi
             \\
-            -\sinh \pi
+            -\sh \pi
             \\
             0
         \end{pmatrix}\! , 
     \]
 
-    \pagebreak
-
-    \noindent и касательная плоскость имеет вид: 
+    \noindent и уравнение касательной плоскости $  T|_{P_2} $ выглядит следующим образом: 
     \[
-        T|_{P_2} \colon 5 \cosh \pi \cdot x + \sinh \pi \cdot y + 5 = 0.
+        5 \ch \pi \cdot x + \sh \pi \cdot y + 5 = 0.
     \]
 
-    \bigskip
-
-    \begin{flushright}
-        \begin{tabular}{rl}
-            \textbf{Ответ:} & Особых точек нет,
-
-            \\
-
-                            & $ T|_{P_1} \colon x - 1 = 0 $,
-
-            \\
-
-                            & $ T|_{P_2} \colon 5 \cosh \pi \cdot x + \sinh \pi \cdot y + 5 = 0 $.
-        \end{tabular}
-    \end{flushright}
+    \textbf{Ответ:} особых точек нет,\quad $ T|_{P_1} \colon x - 1 = 0 $,\quad $ T|_{P_2} \colon 5 \ch \pi \cdot x + \sh \pi \cdot y + 5 = 0 $.
 
     \bigskip
 
-    \problem Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверхность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica)
+    \problem Исследовать зависимость вида поверхности от области изменения параметров $ (u, v) $. Составить уравнения координатных линий. Построить поверхность и координатную сеть на ней (с использованием системы компьютерной алгебры Wolfram Mathematica).
 
     \bigskip
     
     Уравнение поверхности, выраженное через $ x, y, z \colon$
     \[
         \begin{cases}
-            x = \cosh u \cos v,
+            x = \ch u \cos v,
             \\
-            y = 5 \sinh u,
+            y = 5 \sh u,
             \\
-            z = \cosh u \sin v,
+            z = \ch u \sin v
         \end{cases} 
-        \Leftrightarrow \ 
+        \Leftrightarrow \quad
         x^2 + z^2 - \frac{y^2}{25} = 1, 
     \]
 
-    \noindent значит, данная поверхность -- однополостный гиперболоид с осью вдоль $ OY $ (рис. \ref{fig:hyp}).
+    \noindent \nopagebreak значит, данная поверхность --- однополостный гиперболоид (рис. \ref{fig:hyp}).
 
     \begin{figure}[!h]
         \centering
-        \includegraphics[width=0.8\textwidth]{Hyp.pdf}
+        \includegraphics[width=\textwidth]{Hyp.pdf}
         \caption{Однополостный гиперболоид}
         \label{fig:hyp}
     \end{figure}
 
-    Рассмотрим координатные линии данной поверхности. При $ u_0 = const $ получаем:
+    Рассмотрим координатные линии данной поверхности. При $ u_0 = \text{const} $ получаем:
     \[
-        x^2 + z^2 = const,\, const = R = \sqrt{1 + \frac{y^2}{25}} = \cosh u_0,
+        x^2 + z^2 = R = \sqrt{1 + \frac{y^2}{25}} = \ch u_0 = \text{const},
     \]
 
-    \noindent то есть уравнения окружностей с радиусами $R = \cosh u_0$. А при $v_0 = const$ получаем се\-мейство гипербол.
+    \noindent т.\,е. уравнения окружностей с радиусами $R = \ch u_0$. А при $v_0 = const$ получаем се\-мейство гипербол.
 
-    \begin{flushright}
-        \begin{tabular}{rl}
-            \textbf{Ответ:} & Однополостный гиперболоид,
-
-            \\
-
-                            & $ (u_0, v) $ -- окружности,
-
-            \\
-
-                            & $ (u, v_0) $ -- гиперболы.
-        \end{tabular}
-    \end{flushright}
+    \textbf{Ответ:} однополостный гиперболоид,\!\!\quad $ (u_0, v) $ --- окружности,\!\!\quad $ (u, v_0) $ --- гиперболы.
 
     \pagebreak
 
@@ -281,83 +264,81 @@
     Вычислим коэффициенты первой квадратичной формы:
     \[
         \begin{tabular}{l}
-            $ E(u,v) = \scalarProduct{r_u}{r_u} = \sinh^2 u + 25 \cosh^2 u $,
+            $ E(u,v) = \scalarProduct{r_u}{r_u} = \sh^2 u + 25 \ch^2 u $,
             \\ \\
             $ M(u,v) = \scalarProduct{r_u}{r_v} = 0 $,
             \\ \\
-            $ G(u,v) = \scalarProduct{r_v}{r_v} = \cosh^2 u $,
+            $ G(u,v) = \scalarProduct{r_v}{r_v} = \ch^2 u $,
         \end{tabular}
     \]
     
     \noindent значит, матрица первой квадратичной формы имеет вид: 
-    \[
-       \mathbb{G}(u, v) = 
-       \begin{pmatrix}
-           \sinh^2 u + 25 \cosh^2 u & 0
-           \\
-           0                        & \cosh^2 u
-       \end{pmatrix}\! .
-    \]
+    \begin{equation}
+        \label{firstSquareForm}
+        \mathbb{G}(u, v) = 
+        \begin{pmatrix}
+            \sh^2 u + 25 \ch^2 u & 0
+            \\
+            0                        & \ch^2 u
+        \end{pmatrix}\! .
+    \end{equation}
 
-    Угол между кривыми -- это угол между векторами их скоростей в точке их пересечения. Его можно вычислить по следующей формуле:
+    Угол между кривыми --- это угол между векторами скоростей этих кривых в точке их пересечения. Его можно вычислить по следующей формуле:
     \[
         \cos \alpha = \frac {
             (\boldVec \xi_1)^T \cdot \mathbb{G} \cdot \boldVec \xi_2
-        } {
+        } 
+        {
             \sqrt{(\boldVec \xi_1)^T \cdot \mathbb{G} \cdot \boldVec \xi_1}
              \cdot 
              \sqrt{(\boldVec \xi_2)^T \cdot \mathbb{G} \cdot \boldVec \xi_2}
-        }
+        },\quad \textbf{а почему xi печатает x?}
     \]
     
+    \pagebreak
+
     Для нахождения точек пересечения и для вычисления векторов скоростей параметризуем кривые $ l_1 $ и $ l_2 \colon$
     \begin{table}[h]
         \centering
-        \begin{tabular}{lcl}
+        \begin{tabular}{l}
             $
                 l_1 \colon u = v^2
-            $ 
-            & $ \Leftrightarrow $ & 
-            $
+                \! \! \quad \Leftrightarrow \quad
                 \begin{cases}
                     u_1 = t^2,
                     \\
-                    v_1 = t.
+                    v_1 = t
                 \end{cases}
             $
-
             \\ \\
-
             $
                 l_2 \colon u = v
-            $ 
-            & $ \Leftrightarrow $ & 
-            $
+                \quad \Leftrightarrow \quad
                 \begin{cases}
                     u_2 = t,
                     \\
-                    v_2 = t,
+                    v_2 = t
                 \end{cases}
-            $
+            $ 
         \end{tabular}
     \end{table}
     
-    \noindent теперь найдем их точки пересечения:
+    \noindent теперь найдем точки их пересечения:
     \[
         \begin{cases}
             t^2 = t,
             \\
-            t = t.
+            t = t
         \end{cases}
         \Leftrightarrow \ 
         \begin{cases}
             t_1 = 0,
             \\
-            t_2 = 1.
+            t_2 = 1
         \end{cases}
     \]
     
-    Далее вычислим векторы скоростей кривых $ l_1 $ и $ l_2 $ в произвольной точке t:
+    Далее вычислим векторы скоростей кривых $ l_1 $ и $ l_2 $ в произвольной точке $ t \colon $
     \begin{table}[h]
         \centering
         \begin{tabular}{l}
@@ -390,8 +371,6 @@
             $ 
         \end{tabular}
     \end{table}
-
-    \pagebreak
     
     Сначала рассмотрим случай, когда $t = t_1 = 0$, тогда:
     \begin{table}[h]
@@ -426,19 +405,20 @@
     \noindent а значит угол между кривыми в точке $ t_1 $ равен:
     \[
         \cos \alpha_1 = \frac{1}{26}
-        \,\Rightarrow\,
-        \alpha_1 = \arccos{\frac{1}{26}} \approx 1.34^{\circ}
+        \quad \Rightarrow \quad
+        \alpha_1 = \arccos{\frac{1}{26}} \approx 1.34^{\circ}.
     \]
+    \pagebreak
 
-    Теперь рассмотрим случай. когда $ t = t_2 = 1 $, следовательно:
+    Теперь рассмотрим случай, когда $ t = t_2 = 1 \colon$
     \begin{table}[h]
         \centering
         \begin{tabular}{l}
             $ \mathbb{G}|_{t_2} = 
                 \begin{pmatrix}
-                    \sinh^2 1 + 25 \cosh^2 1 & 0
+                    \sh^2 1 + 25 \ch^2 1 & 0
                     \\
-                    0                        & \cosh^2 1
+                    0                        & \ch^2 1
                 \end{pmatrix}\! ,
             $
             \\ \\
@@ -463,97 +443,78 @@
     \noindent и угол между кривыми в точке $ t_2 $ равен:
     \[
         \cos \alpha_2 \approx \frac{124.198}{246.015 \cdot 63.2896}
-        \,\Rightarrow\,
-        \alpha_2 \approx 0.097^{\circ}
+        \quad \Rightarrow \quad
+        \alpha_2 \approx 0.097^{\circ}.
     \]
 
-    \begin{flushright}
-        \begin{tabular}{rl}
-            \textbf{Ответ:} & $ I = (\sinh^2 u + 25 \cosh^2 u)du^2 + (\cosh^2 u) dv^2 $,
+    \bigskip
 
-            \\
-
-                            & $ \alpha_1 \approx 1.34^{\circ} $,
-
-            \\
-
-                            & $ \alpha_2 \approx 0.097^{\circ} $.
-        \end{tabular}
-    \end{flushright}
+    \textbf{Ответ:} $ I = (\sh^2 u + 25 \ch^2 u)du^2 + (\ch^2 u) dv^2 $,\quad $ \alpha_1 \approx 1.34^{\circ} $,\quad $ \alpha_2 \approx 0.097^{\circ} $.
 
     \bigskip
 
     \problem Вычислить вторую квадратичную форму поверхности. Определить типы точек поверхности.
 
-    \bigskip
-
     \[
         \boldVec{r}_{uu} = 
             \begin{pmatrix}
-                \cosh u \cos v
+                \ch u \cos v
                 \\
-                5 \sinh u
+                5 \sh u
                 \\
-                \cosh u \sin v
+                \ch u \sin v
             \end{pmatrix}
-            \!,\
+            \!,\quad
         \boldVec{r}_{uv} = 
             \begin{pmatrix}
-                - \sinh u \sin v
+                - \sh u \sin v
                 \\
                 0
                 \\
-                \sinh u \cos v
+                \sh u \cos v
             \end{pmatrix}
-            \!,\ 
+            \!,\quad
         \boldVec{r}_{vv} = 
             \begin{pmatrix}
-                - \cosh u \cos v
+                - \ch u \cos v
                 \\
                 0
                 \\
-                - \cosh u \sin v
+                - \ch u \sin v
             \end{pmatrix}\! .
     \]
-
-    \pagebreak
 
     Вычислим коэффициенты второй квадратичной формы:
     \begin{table}[h]
         \centering
         \begin{tabular}{l}
-            $ L = \scalarProduct{r_{uu}}{n} = \dfrac{5}{\sqrt{25\cosh^2 + \sinh^2}}
+            $ L = \scalarProduct{r_{uu}}{n} = \dfrac{5}{\sqrt{25\ch^2 + \sh^2}}
             $,
             \\ \\
             $ M = \scalarProduct{r_{uv}}{n} = 0
             $,
             \\ \\
-            $ L = \scalarProduct{r_{vv}}{n} = -\dfrac{5 \cosh^2 u}{\sqrt{25\cosh^2 + \sinh^2}}
+            $ L = \scalarProduct{r_{vv}}{n} = -\dfrac{5 \ch^2 u}{\sqrt{25\ch^2 + \sh^2}}
             $,
         \end{tabular}
     \end{table}
 
     \noindent то есть матрица второй квадратичной формы имеет вид:
-    \[
-        \mathbb{B} = \dfrac{5}{\sqrt{25\cosh^2 + \sinh^2}}
+    \begin{equation}
+        \label{secondSquareForm}
+        \mathbb{B} = \dfrac{5}{\sqrt{25\ch^2 + \sh^2}}
         \begin{pmatrix}
             1 & 0
             \\
-            0 & -\cosh^2 u
+            0 & -\ch^2 u
         \end{pmatrix}\!, 
-    \]
+    \end{equation}
 
-    \noindent а значит все точки поверхности -- гиперболические.
+    \noindent а значит все точки поверхности гиперболические.
 
-    \begin{flushright}
-        \begin{tabular}{rl}
-            \textbf{Ответ:} & $ I\!I = \left(\dfrac{5}{\sqrt{25\cosh^2 + \sinh^2}} \right)\!du^2 - \left(\dfrac{5 \cosh^2 u}{\sqrt{25\cosh^2 + \sinh^2}} \right)\!dv^2 $,
+    \bigskip
 
-            \\[5mm]
-
-                            & Все точки поверхности -- гиперболические.
-        \end{tabular}
-    \end{flushright}
+    \textbf{Ответ:} $ I\!I = \left(\dfrac{5}{\sqrt{25\ch^2 + \sh^2}} \right)\!du^2 - \left(\dfrac{5 \ch^2 u}{\sqrt{25\ch^2 + \sh^2}} \right)\!dv^2 $,\quad все точки поверхности гиперболические.
 
     \bigskip
 
@@ -582,7 +543,7 @@
             $,
             \\ \\
             $
-            \det (\mathbb{B}|_{P_1} - k \cdot \mathbb{G}|_{P_1}) = (k + 1)(k - \frac{1}{25}) 
+            \det \left( \mathbb{B}|_{P_1} - k \cdot \mathbb{G}|_{P_1} \right) = (k + 1) \left(k - \dfrac{1}{25} \right) 
             $.
         \end{tabular}
     \end{table}
@@ -600,10 +561,10 @@
                 1
                 \\
                 0
-            \end{pmatrix}\! ,
+            \end{pmatrix}\! .
     \]
 
-    Главное направление, соответствующее главной кривизне $k_2 = \frac{1}{25} \colon $
+    Главное направление, соответствующее главной кривизне $k_2 = \dfrac{1}{25} \colon $
     \[
         \begin{pmatrix}
             0 & 0
@@ -619,45 +580,43 @@
             \end{pmatrix}\! .
     \]
 
-    \pagebreak
-
     Далее найдем главные кривизны и главные направления в точке $ P_2 \colon $
     \begin{table}[h]
         \centering
         \begin{tabular}{c}
-            $ \mathbb{B}|_{P_2} = \dfrac{5}{\sqrt{25\cosh^2 \pi + \sinh^2 \pi}}
+            $ \mathbb{B}|_{P_2} = \dfrac{5}{\sqrt{25\ch^2 \pi + \sh^2 \pi}}
                 \begin{pmatrix}
                     1 & 0
                     \\
-                    0 & -\cosh^2 \pi
+                    0 & -\ch^2 \pi
                 \end{pmatrix}
             $,
             \\ \\
             $ \mathbb{G}|_{P_2} = 
                 \begin{pmatrix}
-                    \sqrt{25\cosh^2 \pi + \sinh^2 \pi} & 0
+                    \sqrt{25\ch^2 \pi + \sh^2 \pi} & 0
                     \\
-                    0                          & -\cosh^2 \pi
+                    0                          & -\ch^2 \pi
                 \end{pmatrix}
             $,
             \\ \\
             $
-            \det(\mathbb{B}|_{P_2} - k \cdot \mathbb{G}|_{P_2}) = \left(k - \dfrac{5}{(25 \cosh^2 \pi + \sinh^2 \pi)^{\frac{3}{2}}}\right) \left(k + \dfrac{5}{\sqrt{25 \cosh^2 \pi + \sinh^2 \pi}} \right)
+            \det(\mathbb{B}|_{P_2} - k \cdot \mathbb{G}|_{P_2}) = \left(k - \dfrac{5}{(25 \ch^2 \pi + \sh^2 \pi)^{\frac{3}{2}}}\right) \left(k + \dfrac{5}{\sqrt{25 \ch^2 \pi + \sh^2 \pi}} \right)
             $.
         \end{tabular}
     \end{table}
 
-    Главное направление, соответствующее главной кривизне $k_3 = \dfrac{5}{(25 \cosh^2 \pi + \sinh^2 \pi)^{\frac{3}{2}}} \colon $
+    Главное направление, соответствующее главной кривизне $k_3 = \dfrac{5}{(25 \ch^2 \pi + \sh^2 \pi)^{\frac{3}{2}}} \colon $
     \[
         \boldVec \xi_3 = c_3
             \begin{pmatrix}
                 1
                 \\
                 0
-            \end{pmatrix}\! ,
+            \end{pmatrix}\! .
     \]
 
-    Главное направление, соответствующее главной кривизне $k_4 = -\dfrac{5}{\sqrt{25 \cosh^2 \pi + \sinh^2 \pi}} \colon $
+    Главное направление, соответствующее главной кривизне $k_4 = -\dfrac{5}{\sqrt{25 \ch^2 \pi + \sh^2 \pi}} \colon $
     \[
         \boldVec \xi_4 = c_4
             \begin{pmatrix}
@@ -671,17 +630,11 @@
     \begin{table}[h]
         \centering
         \begin{tabular}{l}
-           $ K_{P_1} =  k_1 \cdot k_2 = -0.04 $,
+           $ K_{P_1} =  k_1 \cdot k_2 = -0.04 $,\qquad $ K_{P_2} =  k_3 \cdot k_4 = -\dfrac{5}{(25\ch^2 \pi + \sin^2 \pi)^2} $,
            \\ \\
-           $ K_{P_2} =  k_3 \cdot k_4 = -\dfrac{5}{(25\cosh^2 \pi + \sin^2 \pi)^2} $,
-           \\ \\
-           $ H_{P_1} =  \dfrac{k_1 + k_2}{2} = -0.48 $,
-           \\ \\
-           $ H_{P_2} =  \dfrac{k_3 + k_4}{2} = \dfrac{5}{2} \cdot \dfrac{1 - (25\cosh^2 \pi + \sin^2 \pi)^2}{(25\cosh^2 \pi + \sin^2 \pi)^{\frac{3}{2}}} $\,{.}
+           $ H_{P_1} =  \dfrac{k_1 + k_2}{2} = -0.48 $,\qquad $ H_{P_2} =  \dfrac{k_3 + k_4}{2} = \dfrac{5}{2} \cdot \dfrac{1 - (25\ch^2 \pi + \sin^2 \pi)^2}{(25\ch^2 \pi + \sin^2 \pi)^{\frac{3}{2}}} $.
         \end{tabular}
     \end{table}
-
-    \pagebreak
 
     \problem Составить уравнения линий кривизны, асимптотических и геодезических линий для рассматриваемой поверхности. Привести примеры решения этих уравнений
 
@@ -696,7 +649,7 @@
                 \begin{cases}
                     \dot u = 1,
                     \\
-                    \dot v = 0.
+                    \dot v = 0
                 \end{cases}
                 \Leftrightarrow\ 
                 \begin{cases}
@@ -710,11 +663,11 @@
             $
                 r(t) =
                     \begin{pmatrix}
-                        \cosh(t + C_1) \cos C_2F
+                        \ch(t + C_1) \cos C_2F
                         \\
-                        5\sinh(t + C_1)
+                        5\sh(t + C_1)
                         \\
-                        \cosh(t + C_1) \sin C_2
+                        \ch(t + C_1) \sin C_2
                     \end{pmatrix}\! .
             $
         \end{tabular}
@@ -743,72 +696,61 @@
             $
                 r(t) =
                     \begin{pmatrix}
-                        \cosh(C_3) \cos(t + C_4)
+                        \ch(C_3) \cos(t + C_4)
                         \\
-                        5\sinh(C_3)
+                        5\sh(C_3)
                         \\
-                        \cosh(C_3) \sin(t + C_4)
+                        \ch(C_3) \sin(t + C_4)
                     \end{pmatrix}\! .
             $
         \end{tabular}
     \end{table}
 
     Асимптотические линии:
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{l}
-            $
-                \dfrac{5}{\sqrt{25\cosh^2 u + \sinh^2 u}}
-                \begin{pmatrix}
-                    \dot u & \dot v
-                \end{pmatrix}
-                \begin{pmatrix}
-                    1 & 0
-                    \\
-                    0 & -\cosh^2 u
-                \end{pmatrix}
-                \begin{pmatrix}
-                    \dot u & \dot v
-                \end{pmatrix} = 0,
-            $
-            \\ \\
-            $
-                \dot u^2 - \dot v^2 \cosh^2 u = 0
-                \ \Rightarrow \ 
-                du = \pm  \cosh u \, dv,
-            $
-            \\ \\
-            $
-            \displaystyle\int{}{\dfrac{du}{\cosh u}} = \pm \int{}{dv} = \pm v + C, C \in \mathbb{R},
-            $
-            \\ \\
-            $
-                2\arctan e^u = \pm v + C, C \in \mathbb{R}.
-            $
-        \end{tabular}
-    \end{table}
+    \[
+        \begin{split}
+            & \dfrac{5}{\sqrt{25\ch^2 u + \sh^2 u}}
+            \begin{pmatrix}
+                \dot u & \dot v
+            \end{pmatrix}
+            \begin{pmatrix}
+                1 & 0
+                \\
+                0 & -\ch^2 u
+            \end{pmatrix}
+            \begin{pmatrix}
+                \dot u & \dot v
+            \end{pmatrix} = 0,
+            \\[0.5em]
+            & \dot u^2 - \dot v^2 \ch^2 u = 0
+            \ \Rightarrow \ 
+            du = \pm  \ch u \, dv,
+            \\[0.5em]
+            &  \displaystyle\int{}{\dfrac{du}{\ch u}} = \pm \int{}{dv} = \pm v + C, C \in \mathbb{R},
+            \\[0.5em]
+            & 2\arctan e^u = \pm v + C, C \in \mathbb{R}.
+        \end{split}
+    \]
 
     Геодезические линии при $ u = u(v) \colon $
     \[
         \boldVec r =
             \begin{pmatrix}
-                \cosh u(v) \cos v
+                \ch u(v) \cos v
                 \\
-                5\sinh u(v)
+                5\sh u(v)
                 \\
-                \cosh u(v) \sin v
-            \end{pmatrix}\!,\  
+                \ch u(v) \sin v
+            \end{pmatrix}\!,\quad 
         \boldVec n =
             \begin{pmatrix}
-                5\cosh u(v) \cos v
+                5\ch u(v) \cos v
                 \\
-                -\sinh u(v)
+                -\sh u(v)
                 \\
-                5\cosh u(v) \sin v
+                5\ch u(v) \sin v
             \end{pmatrix}\!,
      \]
-
-     \pagebreak
         
      \begin{table}[h]
         \centering
@@ -816,22 +758,22 @@
             $
                 \boldVec{r}\,' = 
                     \begin{pmatrix}
-                        u'(v) \sinh u(v) \cos v - \cosh u(v) \sin v
+                        u'(v) \sh u(v) \cos v - \ch u(v) \sin v
                         \\
-                        5u'(v) \cosh u
+                        5u'(v) \ch u
                         \\
-                        u'(v) \sinh u(v) \sin v + \cosh u(v) \cos v
+                        u'(v) \sh u(v) \sin v + \ch u(v) \cos v
                     \end{pmatrix}\!,\ 
             $
             \\ \\
             $
             \boldVec{r}\,'' = 
                 \begin{pmatrix}
-                    u''(v) \sinh u(v) \cos v + (u'(v))^2 \cosh u(v) \cos v - 2u'(v) \sinh u(v) \sin v + \cosh u(v) \cos v
+                    u''(v) \sh u(v) \cos v + (u'(v))^2 \ch u(v) \cos v - 2u'(v) \sh u(v) \sin v + \ch u(v) \cos v
                     \\
-                    5(u''(v) \cosh u + (u'(v))^2 \sinh u)
+                    5(u''(v) \ch u + (u'(v))^2 \sh u)
                     \\
-                    u''(v) \sinh u(v) \sin v + (u'(v))^2 \cosh u(v) \cos v + 2u'(v) \sinh u(v) \cos v - \cosh u(v) \sin v
+                    u''(v) \sh u(v) \sin v + (u'(v))^2 \ch u(v) \cos v + 2u'(v) \sh u(v) \cos v - \ch u(v) \sin v
                 \end{pmatrix}\!,
             $
         \end{tabular}
@@ -842,118 +784,111 @@
     \bigskip
 
     \problem Вычислить кривизну кривой $ \gamma $ в точках $ P_1, P_2 $. В одной из точек построить реперь Френе.
+    \\[0.1em]
+    \[
+        \boldVec r = 
+            \begin{pmatrix}
+                \ch u \cos u
+                \\
+                5\sh u
+                \\
+                \ch u \sin u
+            \end{pmatrix}\!,\quad
+        \dot{\boldVec r} = 
+            \begin{pmatrix}
+                \sh u \cos u - \ch u \sin u
+                \\
+                5\ch u
+                \\
+                \sh u \sin u + \ch u \cos u
+            \end{pmatrix}\!,\quad
+        \ddot{\boldVec r} = 
+            \begin{pmatrix}
+                -2\sh u \sin u
+                \\
+                5 \sh u
+                \\
+                2\sh u \cos u
+            \end{pmatrix}\! ,
+    \]
 
-    \bigskip
+    \pagebreak
 
-    \begin{table}[h!]
-        \centering
-        \begin{tabular}{l}
-            $
-                \boldVec r = 
-                    \begin{pmatrix}
-                        \cosh u \cos u
-                        \\
-                        5\sinh u
-                        \\
-                        \cosh u \sin u
-                    \end{pmatrix}\!,\ 
-                \dot{\boldVec r} = 
-                \begin{pmatrix}
-                    \sinh u \cos u - \cosh u \sin u
-                    \\
-                    5\cosh u
-                    \\
-                    \sinh u \sin u + \cosh u \cos u
-                \end{pmatrix}\!,\
-                \ddot{\boldVec r} = 
-                    \begin{pmatrix}
-                        -2\sinh u \sin u
-                        \\
-                        5 \sinh u
-                        \\
-                        2\sinh u \cos u
-                    \end{pmatrix}\! .    
-            $
-            \\ \\ \\
-            $
-                \dot{\boldVec r} \times \ddot{\boldVec r} = 
-                    \begin{vmatrix}
-                        i & j & k
-                        \\
-                        \sinh u \cos u - \cosh u \sin u &  5\cosh u & \sinh u \sin u + \cosh u \cos u
-                        \\
-                        -2\sinh u \sin u & 5 \sinh u & 2\sinh u \cos u
-                    \end{vmatrix} = 
-            $
-            \\ \\
-            $
-                = \begin{pmatrix}
-                    5\sinh u \cosh u \cos u - 5\sinh^2 u \sin u
-                    \\
-                    -2\sinh^2 u
-                    \\
-                    5\sinh u \cosh u \sin u - 5\sinh^2 u \cos u
-                \end{pmatrix}
-            $
-            \\ \\ \\
-            $
-                | \dot{\boldVec r} \times \ddot{\boldVec r} | = \sqrt{25 \sinh^2 u + 54 \sinh^4 u},\  
-                | \dot{\boldVec r} | = \sqrt{26 + 27 \sinh^2 u}.
-            $
-        \end{tabular}
-    \end{table}
+    \[
+        \begin{split}
+            \dot{\boldVec r} \times \ddot{\boldVec r} & = 
+            \begin{vmatrix}
+                i & j & k
+                \\
+                \sh u \cos u - \ch u \sin u &  5\ch u & \sh u \sin u + \ch u \cos u
+                \\
+                -2\sh u \sin u & 5 \sh u & 2\sh u \cos u
+            \end{vmatrix} =
+        \\[0.5em] 
+            & = \begin{pmatrix}
+                5\sh u \ch u \cos u - 5\sh^2 u \sin u
+                \\
+                -2\sh^2 u
+                \\
+                5\sh u \ch u \sin u - 5\sh^2 u \cos u
+            \end{pmatrix}\! ,
+        \end{split}    
+    \]
+
+    \[
+        | \dot{\boldVec r} \times \ddot{\boldVec r} | = \sqrt{25 \sh^2 u + 54 \sh^4 u},\quad  | \dot{\boldVec r} | = \sqrt{26 + 27 \sh^2 u}\, .
+    \]
 
     Вычилсим кривизны в точках $ P_1, P_2 \colon $
     \begin{table}[h!]
         \centering
         \begin{tabular}{l}
             $
-                k|_{P_1} = \sqrt{\dfrac{25 \sinh^2 0 + 54 \sinh^4 0}{26 + 27 \sinh^2 0}} = 0,
+                k|_{P_1} = \sqrt{\dfrac{25 \sh^2 0 + 54 \sh^4 0}{26 + 27 \sh^2 0}} = 0,
             $
             \\ \\
             $
-                k|_{P_2} = \sqrt{\dfrac{25 \sinh^2 \pi + 54 \sinh^4 \pi}{26 + 27 \sinh^2 \pi}} \approx 0.0045.
+                k|_{P_2} = \sqrt{\dfrac{25 \sh^2 \pi + 54 \sh^4 \pi}{26 + 27 \sh^2 \pi}} \approx 0.0045.
             $
         \end{tabular}
     \end{table}
 
-    \pagebreak
 
     Построим репер Френе в точке $ P_2 $ (в точке $ P_1$ репер Френе не определен, потому что кривизна в этой точке $ = 0$):
     \begin{table}[h!]
         \centering
         \begin{tabular}{l}
             $
-                \boldVec{\tau} = \dfrac{\dot{\boldVec{r}}}{|\dot{\boldVec{r}}|} = \dfrac{1}{\sqrt{26 \cosh^2 \pi + \sinh^2 \pi}} 
+                \boldVec{\tau} = \dfrac{\dot{\boldVec{r}}}{|\dot{\boldVec{r}}|} = \dfrac{1}{\sqrt{26 \ch^2 \pi + \sh^2 \pi}} 
                     \begin{pmatrix}
-                        -\sinh \pi 
+                        -\sh \pi 
                         \\
-                        5 \cosh \pi
+                        5 \ch \pi
                         \\
-                        -\cosh \pi
+                        -\ch \pi
                     \end{pmatrix}\!,
             $
             \\ \\ 
             $
-                \boldVec{\beta} = \dfrac{\dot{\boldVec r} \times \ddot{\boldVec r}}{ | \dot{\boldVec r} \times \ddot{\boldVec r} |} = \dfrac{1}{\sqrt{25\cosh^2 \pi + 29\sinh^2 \pi}} 
+                \boldVec{\beta} = \dfrac{\dot{\boldVec r} \times \ddot{\boldVec r}}{ | \dot{\boldVec r} \times \ddot{\boldVec r} |} = \dfrac{1}{\sqrt{25\ch^2 \pi + 29\sh^2 \pi}} 
                     \begin{pmatrix}
-                        -5\cosh \pi 
+                        -5\ch \pi 
                         \\
-                        -2\sinh \pi
+                        -2\sh \pi
                         \\
-                        -5\sinh \pi 
+                        -5\sh \pi 
                     \end{pmatrix}\!,
             $
         \end{tabular}
     \end{table}
     \[
-        \boldVec{\nu} = \vectorProduct{\beta}{\tau} = \dfrac{1}{\sqrt{(26 \cosh^2 \pi + \sinh^2 \pi) \cdot (25\cosh^2 \pi + 29\sinh^2 \pi)}}
+        \boldVec{\nu} = \vectorProduct{\beta}{\tau} = \dfrac{1}{\sqrt{(26 \ch^2 \pi + \sh^2 \pi) \cdot (25\ch^2 \pi + 29\sh^2 \pi)}}
             \begin{pmatrix}
-                27 \sinh \pi \cosh \pi
+                27 \sh \pi \ch \pi
                 \\
                 -1
                 \\
-                -25 \cosh^2 \pi - 2\sinh^2 \pi
+                -25 \ch^2 \pi - 2\sh^2 \pi
             \end{pmatrix}\!.
     \]
 
